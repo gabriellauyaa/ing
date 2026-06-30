@@ -88,7 +88,11 @@ button { cursor: none; }
 #visit-counter .vc-num{font-family:var(--ff-mono);font-size:18px;color:var(--gold);line-height:1}
 #visit-counter .vc-label{font-family:var(--ff-mono);font-size:8px;color:var(--gray-silver);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
 /* LIGHT MODE (mejora 6) */
-[data-mode="light"]{--bg-primary:#F5F5F0;--bg-secondary:#EBEBE5;--green-emerald:#D4E8DA;--gold:#8B6914;--gold-light:#A07820;--white-mineral:#1A1A1A;--gray-silver:#555;--neon-green:#1A7A40}
+body.light-mode{--bg-primary:#F5F5F0 !important;--bg-secondary:#EBEBE5 !important;--green-emerald:#D4E8DA !important;--gold:#8B6914 !important;--gold-light:#A07820 !important;--white-mineral:#1A1A1A !important;--gray-silver:#444 !important;--neon-green:#1A7A40 !important}
+body.light-mode nav.scrolled{background:rgba(245,245,240,.9) !important}
+body.light-mode .exp-card,body.light-mode .service-card,body.light-mode .cred-card,body.light-mode .org-card,body.light-mode .test-card,body.light-mode .pub-card,body.light-mode .blog-card,body.light-mode .tarifa-card{background:rgba(255,255,255,.8) !important;border-color:rgba(139,105,20,.2) !important}
+body.light-mode #chat-window{background:#F5F5F0 !important}
+body.light-mode .chat-msg.bot{background:rgba(212,232,218,.5) !important}
 /* NAV CONTROLS */
 .nav-controls{display:flex;align-items:center;gap:12px}
 #lang-toggle{font-family:var(--ff-mono);font-size:10px;color:var(--gold);border:1px solid rgba(200,149,42,.4);background:transparent;padding:5px 10px;letter-spacing:.1em;transition:background .2s,color .2s}
@@ -200,6 +204,34 @@ button { cursor: none; }
 /* RESPONSIVE ADDITIONS */
 @media(max-width:1024px){.impacto-grid,.tarifas-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.impacto-grid{grid-template-columns:repeat(2,1fr)}.tarifas-grid{grid-template-columns:1fr}.nav-controls{gap:6px}#visit-counter{display:none}.sectores-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* BACK TO TOP */
+#back-top{position:fixed;bottom:100px;right:32px;z-index:4999;width:40px;height:40px;border-radius:50%;background:var(--bg-secondary);border:1px solid rgba(200,149,42,.4);color:var(--gold);font-size:18px;display:none;align-items:center;justify-content:center;transition:background .2s;cursor:pointer}
+#back-top:hover{background:var(--gold);color:var(--bg-primary)}
+/* NAV DROPDOWN */
+.nav-dropdown{position:relative}
+.nav-dropdown .nav-sub{display:none;position:absolute;top:calc(100% + 12px);left:0;background:rgba(10,15,13,.96);border:1px solid rgba(200,149,42,.2);border-radius:8px;padding:8px 0;min-width:160px;z-index:2000;backdrop-filter:blur(20px)}
+.nav-dropdown:hover .nav-sub{display:block}
+.nav-sub{list-style:none!important;padding:0!important}
+.nav-sub li a{display:block;padding:8px 20px;font-family:var(--ff-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-silver)!important;transition:color .2s,background .2s}
+.nav-sub li a:hover{color:var(--gold)!important;background:rgba(200,149,42,.06)}
+.nav-sub li a::after{display:none}
+/* SECTOR IMAGES */
+.sector-img{width:100%;height:120px;overflow:hidden;border-radius:8px;margin-bottom:16px}
+.sector-img img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(20%);transition:transform .4s,filter .3s}
+.sector-card:hover .sector-img img{transform:scale(1.06);filter:grayscale(0%)}
+/* EXP CARD IMAGES */
+.exp-card-img{width:100%;height:110px;overflow:hidden;border-radius:8px;margin-bottom:14px}
+.exp-card-img img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%);transition:transform .4s}
+.exp-card:hover .exp-card-img img{transform:scale(1.06)}
+/* TESTIMONIAL FORM */
+.test-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.test-form-input{width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none;transition:border-color .3s;cursor:text}
+.test-form-input:focus{border-color:var(--gold)}
+@media(max-width:768px){.test-form-grid{grid-template-columns:1fr}}
+/* MOBILE NAV IMPROVEMENTS */
+.nav-links.open .nav-sub{display:flex!important;flex-direction:column;position:static;background:transparent;border:none;border-radius:0;padding:4px 0 4px 16px;min-width:auto}
+.nav-links.open .nav-sub li a{font-size:13px;padding:6px 0;opacity:.8}
 
 /* ═══════════════════════════════════════════
    CURSOR
@@ -1308,7 +1340,7 @@ footer {
   <div class="nav-controls">
     <button id="lang-toggle" title="Switch language">EN</button>
     <button id="mode-toggle" title="Modo claro/oscuro">☀️</button>
-    <a href="img/CV_Gabriel_Lauya_Avelino.pdf" download class="btn-cv">⬇ CV</a>
+    <a href="https://drive.google.com/drive/folders/1c6djnwnpZBdlPiSAVriudczcawts_mgE?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-cv" data-es="⬇ Brochure" data-en="⬇ Brochure">⬇ Brochure</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -1351,13 +1383,17 @@ footer {
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           <span class="tooltip">WhatsApp · +51 918 978 660</span>
         </a>
-        <a href="https://linktr.ee/gabriellauya" class="social-icon" aria-label="Más Info en Linktr.ee">
+        <a href="mailto:lauya.ambiental.30@gmail.com" class="social-icon" aria-label="Email">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <span class="tooltip">Más Info Gabo</span>
+          <span class="tooltip">Email</span>
         </a>
-        <a href="https://www.linkedin.com/company/biozenit" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Página de Biozenit">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span class="tooltip">Biozenit</span>
+        <a href="https://linktr.ee/gabriellauya" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Más información">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="tooltip">Más información</span>
+        </a>
+        <a href="https://gabriellauyaa.github.io/ing" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Sitio web">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <span class="tooltip">Sitio web</span>
         </a>
       </div>
     </div><!-- /hero-text-col -->
@@ -1369,6 +1405,8 @@ footer {
   </div>
 </section>
 
+
+<!-- PERFIL -->
 <!-- PERFIL -->
 <section id="perfil" aria-label="Perfil Ejecutivo">
   <div class="container">
@@ -1412,6 +1450,8 @@ footer {
   </div>
 </section>
 
+
+<!-- IMPACTO EN NÚMEROS -->
 <!-- IMPACTO EN NÚMEROS (mejora 4) -->
 <section id="impacto" aria-label="Impacto en números">
   <div class="container">
@@ -1430,6 +1470,8 @@ footer {
   </div>
 </section>
 
+
+<!-- EXPERIENCIA -->
 <!-- EXPERIENCIA -->
 <section id="experiencia" aria-label="Trayectoria Profesional">
   <div class="container">
@@ -1513,6 +1555,110 @@ footer {
   </div>
 </section>
 
+
+<!-- CREDENCIALES -->
+<!-- CREDENCIALES -->
+<section id="credenciales" aria-label="Credenciales Internacionales">
+  <div class="container">
+    <p class="section-label reveal">— Credenciales —</p>
+    <h2 class="section-headline reveal">RECONOCIMIENTO DE GABRIEL </h2>
+    <div class="cred-grid">
+       
+      <div class="cred-card reveal" style="transition-delay:0s">
+        <div class="cred-img-wrap"><img src="img/cred-ubc.jpg" alt="Gabriel Lauya en UBC BRIMM" loading="lazy"></div>
+        <p class="cred-year">2026</p>
+        <h3 class="cred-inst">University of British Columbia</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">BRIMM — Economic Leadership for Mining</p>
+      </div>
+       
+      <div class="cred-card reveal" style="transition-delay:0.08s">
+         <div class="cred-img-wrap"><img src="img/Innovador.jpg" alt="Innovador COSAPINES" loading="lazy"></div>
+        <p class="cred-year">2026</p>
+        <h3 class="cred-inst">COSAPI S.A.</h3>
+        <span class="cred-badge">Reconocimiento</span>
+        <p class="cred-desc">INNOVADOR COSAPIENS · Red de Innovadores de COSAPI S.A </p>
+      </div>
+
+      <div class="cred-card reveal" style="transition-delay:0.08s">
+         <div class="cred-img-wrap"><img src="img/icam.jpg" alt="Gabriel Facilitador ICAM" loading="lazy"></div>
+        <p class="cred-year">2026</p>
+        <h3 class="cred-inst">COSAPI S.A.</h3>
+        <span class="cred-badge">Reconocimiento</span>
+        <p class="cred-desc">FACILITADOR ICAM </p>
+      </div>
+       
+      <div class="cred-card reveal" style="transition-delay:0.16s">
+        <p class="cred-year">2026</p>
+        <h3 class="cred-inst">ProInnóvate / INACAL</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Especialización en Evaluación de Conformidad</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.24s">
+        <p class="cred-year">2026</p>
+        <h3 class="cred-inst">British Council</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Especialización en Inglés</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.32s">
+        <p class="cred-year">2025–26</p>
+        <h3 class="cred-inst">Universidad Complutense de Madrid</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Cambridge English Online</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.4s">
+        <p class="cred-year">2025</p>
+        <h3 class="cred-inst">Ecosistemas de Alta Montaña</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Gestión y Manejo de Ecosistemas</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.48s">
+        <div class="cred-img-wrap"><img src="img/cred-perumin.jpg" alt="Gabriel Lauya en PERUMIN 37" loading="lazy"></div>
+        <p class="cred-year">2025</p>
+        <h3 class="cred-inst">PERUMIN 37</h3>
+        <span class="cred-badge">Joven Líder</span>
+        <p class="cred-desc">PERUMIN Jóvenes</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.56s">
+        <div class="cred-img-wrap"><img src="img/cred-harvard.jpg" alt="Gabriel Lauya en Harvard Business School" loading="lazy"></div>
+        <p class="cred-year">2024</p>
+        <h3 class="cred-inst">Harvard Business School</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Aspire Leader Program</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.64s">
+        <p class="cred-year">2024</p>
+        <h3 class="cred-inst">OMA</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Programa Qarikuna Rumi (Hombre Roca)</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.72s">
+        <p class="cred-year">2023</p>
+        <h3 class="cred-inst">University of Zurich</h3>
+        <span class="cred-badge">Fellow</span>
+        <p class="cred-desc">Climate Change Specialization</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.80s">
+        <p class="cred-year">2023</p>
+        <h3 class="cred-inst">Autoría</h3>
+        <span class="cred-badge">Publicación</span>
+        <p class="cred-desc">"Las Montañas, Nuestro Futuro" — ISBN 978-987-48458-2-5</p>
+      </div>
+      <div class="cred-card reveal" style="transition-delay:0.88s">
+        <p class="cred-year">2022</p>
+        <h3 class="cred-inst">Anglo American Quellaveco</h3>
+        <span class="cred-badge">#1 Ranking</span>
+        <p class="cred-desc">Mejores prácticas entre 190+ contratistas de AAQ</p>
+      </div>
+    </div>
+    <div class="cred-quote-sep reveal">
+      <p>"Las becas no son el destino — son el combustible para llegar más lejos."</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
 <!-- SERVICIOS -->
 <section id="servicios" aria-label="Servicios Profesionales">
   <div class="container">
@@ -1644,334 +1790,12 @@ footer {
   </div>
 </section>
 
-<!-- TARIFAS (mejora 13) -->
-<section id="tarifas" aria-label="Paquetes y Tarifas">
-  <div class="container">
-    <p class="section-label reveal" style="text-align:center">— Inversión —</p>
-    <h2 class="section-headline reveal" style="text-align:center">PAQUETES DE SERVICIO</h2>
-    <div class="tarifas-grid">
-      <div class="tarifa-card reveal">
-        <div class="tarifa-icon">🌱</div>
-        <div class="tarifa-name">Consultoría Puntual</div>
-        <div class="tarifa-price">Por hora · Proyecto específico</div>
-        <ul class="tarifa-items"><li>Revisión de documentos técnicos</li><li>Diagnóstico ambiental rápido</li><li>Asesoría en cumplimiento normativo</li><li>Entrega en 48-72 horas</li></ul>
-        <a href="#contacto" class="btn-tarifa">Solicitar cotización</a>
-      </div>
-      <div class="tarifa-card featured reveal" style="transition-delay:.1s">
-        <div class="tarifa-featured-badge">MÁS POPULAR</div>
-        <div class="tarifa-icon">🏔</div>
-        <div class="tarifa-name">Consultoría Integral</div>
-        <div class="tarifa-price">Mensual · Proyecto largo plazo</div>
-        <ul class="tarifa-items"><li>Gestión ambiental completa ISO 14001</li><li>Auditorías y cumplimiento normativo</li><li>Capacitaciones SSOMA al equipo</li><li>Monitoreo ambiental y reportes</li><li>Soporte continuo prioritario</li></ul>
-        <a href="#contacto" class="btn-tarifa">Hablar con Gabriel</a>
-      </div>
-      <div class="tarifa-card reveal" style="transition-delay:.2s">
-        <div class="tarifa-icon">🎓</div>
-        <div class="tarifa-name">Mentoría y Capacitación</div>
-        <div class="tarifa-price">Por sesión · Programa personalizado</div>
-        <ul class="tarifa-items"><li>Mentoría 1:1 para ingenieros</li><li>Talleres grupales SSOMA</li><li>Orientación en becas internacionales</li><li>Coaching de marca personal</li></ul>
-        <a href="https://wa.me/51918978660" class="btn-tarifa">Agendar sesión</a>
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:32px;font-family:var(--ff-mono);font-size:11px;color:var(--gray-silver);letter-spacing:.08em">* Tarifas coordinadas directamente. Contáctame para una propuesta personalizada sin compromiso.</p>
-  </div>
-</section>
-
-<!-- PUBLICACIONES (mejora 2) -->
-<section id="publicaciones" aria-label="Publicaciones y Medios">
-  <div class="container">
-    <p class="section-label reveal">— Publicaciones y Medios —</p>
-    <h2 class="section-headline reveal">VOZ CON AUTORIDAD TÉCNICA</h2>
-    <div class="pub-grid">
-      <div class="pub-card reveal"><div class="pub-card-body"><div class="pub-type">📚 Libro publicado</div><div class="pub-title">"Las Montañas, Nuestro Futuro"</div><div class="pub-desc">Publicación sobre ecosistemas de alta montaña, cambio climático y gestión ambiental sostenible en los Andes peruanos.</div><div class="pub-meta">ISBN 978-987-48458-2-5 · 2023</div></div></div>
-      <div class="pub-card reveal" style="transition-delay:.1s"><div class="pub-card-body"><div class="pub-type">🎤 Conferencista</div><div class="pub-title">PERUMIN 35, 36 y 37 · EXPOMINA 2024</div><div class="pub-desc">Conferencista y panelista en los eventos de minería y sostenibilidad más importantes de Latinoamérica y el mundo.</div><div class="pub-meta">2022 · 2023 · 2024 · 2025</div></div></div>
-      <div class="pub-card reveal" style="transition-delay:.2s"><div class="pub-card-body"><div class="pub-type">🌍 Ponencia internacional</div><div class="pub-title">Congreso Americano de Microbiología · Argentina 2024</div><div class="pub-desc">Ponente sobre aplicaciones ambientales y biotecnología en gestión de ecosistemas mineros.</div><div class="pub-meta">Buenos Aires · 2024</div></div></div>
-      <div class="pub-card reveal" style="transition-delay:.3s"><div class="pub-card-body"><div class="pub-type">📺 Panel técnico</div><div class="pub-title">TIMDS 2026 · Innovación SSOMA</div><div class="pub-desc">Panelista sobre innovación digital en seguridad, salud ocupacional y medio ambiente en proyectos mineros de clase mundial.</div><div class="pub-meta">2026</div></div></div>
-      <div class="pub-card reveal" style="transition-delay:.4s"><div class="pub-card-body"><div class="pub-type">💼 LinkedIn · Contenido técnico</div><div class="pub-title">Artículos sobre gestión ambiental y liderazgo</div><div class="pub-desc">Más de 23,000 seguidores consumiendo contenido técnico de valor sobre ingeniería ambiental, SSOMA e innovación.</div><div class="pub-meta">23,833 seguidores · LinkedIn</div><a href="https://www.linkedin.com/in/gabriellauya/" target="_blank" class="pub-link">Ver perfil →</a></div></div>
-      <div class="pub-card reveal" style="transition-delay:.5s"><div class="pub-card-body"><div class="pub-type">🏆 Reconocimiento</div><div class="pub-title">PERUMIN Jóvenes 2025 · Joven Líder</div><div class="pub-desc">Reconocido como Joven Líder en el evento de minería más importante del Perú ante miles de asistentes.</div><div class="pub-meta">PERUMIN 37 · Arequipa · 2025</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIOS (mejora 3) -->
-<section id="testimonios" aria-label="Testimonios">
-  <div class="container">
-    <p class="section-label reveal" style="text-align:center">— Testimonios —</p>
-    <h2 class="section-headline reveal" style="text-align:center">LO QUE DICEN QUIENES ME CONOCEN</h2>
-    <div class="test-grid">
-      <div class="test-card reveal"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel es un profesional excepcional con una visión única para integrar innovación tecnológica en gestión ambiental. Su liderazgo en Quellaveco fue determinante para posicionarnos como #1 entre todos los contratistas."</p><div class="test-author"><div class="test-avatar">F</div><div><div class="test-name">Freddy Amarante</div><div class="test-role">Project Manager · COSAPI / AAQ TC06</div></div></div></div>
-      <div class="test-card reveal" style="transition-delay:.1s"><div class="test-quote-mark">"</div><p class="test-text">"La capacidad de Gabriel para diseñar materiales técnicos accesibles a equipos de campo es notable. En NEXA implementó estándares de biodiversidad de manera impecable."</p><div class="test-author"><div class="test-avatar">G</div><div><div class="test-name">Guillermo Chanduvi</div><div class="test-role">SSOMA Manager · COSAPI / AAQ TC06</div></div></div></div>
-      <div class="test-card reveal" style="transition-delay:.2s"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel tiene un don para mentorear. Me orientó en mi postulación a PRONABEC y logré obtenerla. Su ejemplo como primer profesional de su comunidad es una inspiración para toda nuestra generación."</p><div class="test-author"><div class="test-avatar">A</div><div><div class="test-name">Alexandra Carrillo Q.</div><div class="test-role">Ingeniera Ambiental · Mentee IIMP</div></div></div></div>
-      <div class="test-card reveal" style="transition-delay:.3s"><div class="test-quote-mark">"</div><p class="test-text">"El Botón de Reportabilidad que Gabriel desarrolló transformó nuestra cultura de reporte en campo. Una solución innovadora que ningún otro contratista había logrado implementar."</p><div class="test-author"><div class="test-avatar">C</div><div><div class="test-name">Carlos Muñoz</div><div class="test-role">Construction Manager · COSAPI / AAQ TC06</div></div></div></div>
-      <div class="test-card reveal" style="transition-delay:.4s"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel representa el nuevo perfil de ingeniero ambiental que el sector minero peruano necesita: técnico, innovador, líder y con profundo compromiso social."</p><div class="test-author"><div class="test-avatar">I</div><div><div class="test-name">Instituto de Ingenieros de Minas</div><div class="test-role">IIMP Perú · Programa Mentoring</div></div></div></div>
-      <div class="test-card reveal" style="transition-delay:.5s"><div class="test-quote-mark">"</div><p class="test-text">"Participar en el programa BRIMM de UBC junto a Gabriel confirmó lo que ya sabíamos: es un profesional de calibre internacional. Su análisis en la negociación de Mina 2 fue brillante."</p><div class="test-author"><div class="test-avatar">U</div><div><div class="test-name">Colega BRIMM 2026</div><div class="test-role">University of British Columbia · Canadá</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- GALERÍA (mejora 4) -->
-<section id="galeria" aria-label="Galería de Momentos">
-  <div class="container">
-    <p class="section-label reveal" style="text-align:center">— Galería —</p>
-    <h2 class="section-headline reveal" style="text-align:center">MOMENTOS QUE DEFINEN UNA CARRERA</h2>
-    <div class="gallery-grid reveal" id="gallery-grid">
-      <div class="gallery-item" data-idx="0"><img src="img/cred-ubc.jpg" alt="UBC BRIMM 2026 — Vancouver"></div>
-      <div class="gallery-item" data-idx="1"><img src="img/cred-harvard.jpg" alt="Harvard Aspire Leader 2024"></div>
-      <div class="gallery-item" data-idx="2"><img src="img/cred-perumin.jpg" alt="PERUMIN 37 — Joven Líder 2025"></div>
-      <div class="gallery-item" data-idx="3"><img src="img/Innovador.jpg" alt="COSAPIENS — Red de Innovadores"></div>
-      <div class="gallery-item" data-idx="4"><img src="img/icam.jpg" alt="Facilitador ICAM — COSAPI/AAQ"></div>
-      <div class="gallery-item" data-idx="5"><img src="img/ReconocimientoAAQ.jpg" alt="Reconocimiento Anglo American Quellaveco"></div>
-      <div class="gallery-item" data-idx="6"><img src="img/org-iimp.jpg" alt="Instituto de Ingenieros de Minas del Perú"></div>
-      <div class="gallery-item" data-idx="7"><img src="img/vol-amautas.jpg" alt="Amautas Mineros — Mentoría"></div>
-      <div class="gallery-item" data-idx="8"><img src="img/heros.jpg" alt="Gabriel Lauya Avelino — Ingeniero Ambiental"></div>
-    </div>
-  </div>
-</section>
-<div id="lightbox" role="dialog">
-  <button id="lightbox-close">✕</button>
-  <button id="lightbox-prev">‹</button>
-  <img id="lightbox-img" src="" alt="">
-  <button id="lightbox-next">›</button>
-  <div id="lightbox-caption"></div>
-</div>
-
-<!-- BLOG (mejora 9) -->
-<section id="blog" aria-label="Blog Técnico">
-  <div class="container">
-    <p class="section-label reveal" style="text-align:center">— Blog Técnico —</p>
-    <h2 class="section-headline reveal" style="text-align:center">CONOCIMIENTO QUE TRANSFORMA</h2>
-    <div class="blog-grid">
-      <div class="blog-card reveal"><img class="blog-img" src="img/cred-ubc.jpg" alt="ISO 14001:2026"><div class="blog-body"><div class="blog-tag">🌿 Gestión Ambiental</div><h3 class="blog-title">ISO 14001:2026: Qué cambia y cómo preparar a tu empresa</h3><p class="blog-excerpt">La nueva versión trae cambios en gestión del riesgo, economía circular y digitalización. Los puntos clave que debes conocer como supervisor ambiental.</p><div class="blog-date">Junio 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
-      <div class="blog-card reveal" style="transition-delay:.1s"><img class="blog-img" src="img/Innovador.jpg" alt="PWA SSOMA"><div class="blog-body"><div class="blog-tag">💡 Innovación SSOMA</div><h3 class="blog-title">Cómo creé una PWA de reportabilidad SSOMA sin presupuesto</h3><p class="blog-excerpt">El Botón de Reportabilidad que cambió la cultura de reporte en campo de COSAPI/AAQ. Paso a paso con herramientas gratuitas.</p><div class="blog-date">Mayo 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
-      <div class="blog-card reveal" style="transition-delay:.2s"><img class="blog-img" src="img/cred-harvard.jpg" alt="Becas internacionales"><div class="blog-body"><div class="blog-tag">🎓 Liderazgo y Becas</div><h3 class="blog-title">De PRONABEC a Harvard: La ruta de las becas internacionales</h3><p class="blog-excerpt">Mi experiencia postulando a Harvard Aspire Leader, UBC BRIMM y British Council. Estrategia, documentos y lecciones aprendidas.</p><div class="blog-date">Abril 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- AGENDA (mejora 8) -->
-<section id="agenda" aria-label="Agendar reunión">
-  <div class="container">
-    <div class="agenda-inner">
-      <p class="section-label reveal">— Agenda —</p>
-      <h2 class="section-headline reveal">¿HABLAMOS?</h2>
-      <p class="agenda-sub reveal">Agenda una llamada de 30 minutos sin compromiso. Conversemos sobre tu proyecto, consultoría, capacitación o simplemente para conocernos.</p>
-      <a href="https://wa.me/51918978660?text=Hola%20Gabriel%2C%20quisiera%20agendar%20una%20llamada%20contigo." target="_blank" class="btn-calendly reveal">📅 Agendar llamada por WhatsApp</a>
-    </div>
-  </div>
-</section>
 
 <!-- SECTORES -->
-<section id="sectores" aria-label="Sectores donde genera impacto">
-  <div class="container">
-    <p class="section-label reveal">— Sectores —</p>
-    <h2 class="section-headline reveal">SECTORES DONDE GENERO IMPACTO</h2>
-    <div class="sectores-grid">
-      <div class="sector-card reveal" style="transition-delay:0s">
-        <div class="sector-icon" aria-hidden="true">🏔</div>
-        <h3 class="sector-name">Minería</h3>
-        <p class="sector-desc">Gran y mediana minería — cumplimiento IGA, ISO, supervisión ambiental en proyectos de clase mundial</p>
-        <p class="sector-ref">Anglo American · Antamina · Chinalco</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.08s">
-        <div class="sector-icon" aria-hidden="true">🏗</div>
-        <h3 class="sector-name">Construcción e Infraestructura</h3>
-        <p class="sector-desc">Supervisión ambiental en obras civiles, carreteras, presas y proyectos de ingeniería de alto impacto</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.16s">
-        <div class="sector-icon" aria-hidden="true">⚡</div>
-        <h3 class="sector-name">Energía y Medio Ambiente</h3>
-        <p class="sector-desc">Gestión ambiental en proyectos energéticos bajo estándares IFC y normativa peruana ambiental</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.24s">
-        <div class="sector-icon" aria-hidden="true">🛣</div>
-        <h3 class="sector-name">Transporte e Infraestructura Vial</h3>
-        <p class="sector-desc">Cumplimiento normativo ambiental en proyectos viales, accesos mineros y obras lineales</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.32s">
-        <div class="sector-icon" aria-hidden="true">🌿</div>
-        <h3 class="sector-name">Agricultura y Agroindustria</h3>
-        <p class="sector-desc">Planes de manejo ambiental, gestión hídrica y sostenibilidad en el sector agrícola y agroindustrial</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.4s">
-        <div class="sector-icon" aria-hidden="true">🏭</div>
-        <h3 class="sector-name">Industria y Manufactura</h3>
-        <p class="sector-desc">Implementación ISO 14001, gestión de residuos industriales, cumplimiento ambiental y SSOMA</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.48s">
-        <div class="sector-icon" aria-hidden="true">🏘</div>
-        <h3 class="sector-name">Urbanismo y Vivienda</h3>
-        <p class="sector-desc">Instrumentos de gestión ambiental para habilitaciones urbanas, proyectos inmobiliarios y saneamiento</p>
-      </div>
-      <div class="sector-card reveal" style="transition-delay:0.56s">
-        <div class="sector-icon" aria-hidden="true">💧</div>
-        <h3 class="sector-name">Saneamiento y Agua</h3>
-        <p class="sector-desc">Gestión ambiental en proyectos de agua potable, alcantarillado, tratamiento y recursos hídricos</p>
-      </div>
-    </div>
-  </div>
-  <div class="quote-sep-dark reveal" style="margin-top:60px;">
-    <p>"La sostenibilidad no es una opción — es la única estrategia de negocio viable para el siglo XXI."</p>
-  </div>
-</section>
 
-<!-- CLIENTES -->
-<section id="clientes" aria-label="Empresas que confiaron en Gabriel">
-  <div class="container">
-    <p class="section-label reveal" style="text-align:center;">— Clientes & Proyectos —</p>
-    <h2 class="section-headline reveal" style="text-align:center;">EMPRESAS QUE CONFIARON EN MI TRABAJO</h2>
-  </div>
-  <div class="marquee-container reveal">
-    <div class="marquee-track" id="marquee-track-1">
-      <span class="marquee-item">ANGLO AMERICAN</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">ANTAMINA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">CHINALCO</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">SANTA LUISA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">COSAPI</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNASAM</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNI</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">MINEM</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">OEFA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">ANA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">SUNAFIL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">HARVARD BUSINESS SCHOOL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNIVERSITY OF BRITISH COLUMBIA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">BRITISH COUNCIL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNIV. COMPLUTENSE DE MADRID</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNIVERSITY OF ZURICH</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">OMA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">IIMP</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">AMAUTAS MINEROS</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">ProInnóvate</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">INACAL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <!-- Duplicate for seamless loop -->
-      <span class="marquee-item">ANGLO AMERICAN</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">ANTAMINA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">CHINALCO</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">SANTA LUISA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">COSAPI</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNASAM</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNI</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">MINEM</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">OEFA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">ANA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">SUNAFIL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">HARVARD BUSINESS SCHOOL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNIVERSITY OF BRITISH COLUMBIA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">BRITISH COUNCIL</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNIV. COMPLUTENSE DE MADRID</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">UNIVERSITY OF ZURICH</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">OMA</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">IIMP</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">AMAUTAS MINEROS</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">ProInnóvate</span><span class="marquee-sep" aria-hidden="true">·</span>
-      <span class="marquee-item">INACAL</span><span class="marquee-sep" aria-hidden="true">·</span>
-    </div>
-  </div>
-  <div class="container">
-    <p class="clients-note reveal">He colaborado con algunas de las organizaciones más importantes del sector minero, ambiental y académico de Perú y el mundo.</p>
-  </div>
-</section>
+<!-- ORGANIZACIONES -->
 
-<!-- CREDENCIALES -->
-<section id="credenciales" aria-label="Credenciales Internacionales">
-  <div class="container">
-    <p class="section-label reveal">— Credenciales —</p>
-    <h2 class="section-headline reveal">RECONOCIMIENTO DE GABRIEL </h2>
-    <div class="cred-grid">
-       
-      <div class="cred-card reveal" style="transition-delay:0s">
-        <div class="cred-img-wrap"><img src="img/cred-ubc.jpg" alt="Gabriel Lauya en UBC BRIMM" loading="lazy"></div>
-        <p class="cred-year">2026</p>
-        <h3 class="cred-inst">University of British Columbia</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">BRIMM — Economic Leadership for Mining</p>
-      </div>
-       
-      <div class="cred-card reveal" style="transition-delay:0.08s">
-         <div class="cred-img-wrap"><img src="img/Innovador.jpg" alt="Innovador COSAPINES" loading="lazy"></div>
-        <p class="cred-year">2026</p>
-        <h3 class="cred-inst">COSAPI S.A.</h3>
-        <span class="cred-badge">Reconocimiento</span>
-        <p class="cred-desc">INNOVADOR COSAPIENS · Red de Innovadores de COSAPI S.A </p>
-      </div>
-
-      <div class="cred-card reveal" style="transition-delay:0.08s">
-         <div class="cred-img-wrap"><img src="img/icam.jpg" alt="Gabriel Facilitador ICAM" loading="lazy"></div>
-        <p class="cred-year">2026</p>
-        <h3 class="cred-inst">COSAPI S.A.</h3>
-        <span class="cred-badge">Reconocimiento</span>
-        <p class="cred-desc">FACILITADOR ICAM </p>
-      </div>
-       
-      <div class="cred-card reveal" style="transition-delay:0.16s">
-        <p class="cred-year">2026</p>
-        <h3 class="cred-inst">ProInnóvate / INACAL</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Especialización en Evaluación de Conformidad</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.24s">
-        <p class="cred-year">2026</p>
-        <h3 class="cred-inst">British Council</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Especialización en Inglés</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.32s">
-        <p class="cred-year">2025–26</p>
-        <h3 class="cred-inst">Universidad Complutense de Madrid</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Cambridge English Online</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.4s">
-        <p class="cred-year">2025</p>
-        <h3 class="cred-inst">Ecosistemas de Alta Montaña</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Gestión y Manejo de Ecosistemas</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.48s">
-        <div class="cred-img-wrap"><img src="img/cred-perumin.jpg" alt="Gabriel Lauya en PERUMIN 37" loading="lazy"></div>
-        <p class="cred-year">2025</p>
-        <h3 class="cred-inst">PERUMIN 37</h3>
-        <span class="cred-badge">Joven Líder</span>
-        <p class="cred-desc">PERUMIN Jóvenes</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.56s">
-        <div class="cred-img-wrap"><img src="img/cred-harvard.jpg" alt="Gabriel Lauya en Harvard Business School" loading="lazy"></div>
-        <p class="cred-year">2024</p>
-        <h3 class="cred-inst">Harvard Business School</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Aspire Leader Program</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.64s">
-        <p class="cred-year">2024</p>
-        <h3 class="cred-inst">OMA</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Programa Qarikuna Rumi (Hombre Roca)</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.72s">
-        <p class="cred-year">2023</p>
-        <h3 class="cred-inst">University of Zurich</h3>
-        <span class="cred-badge">Fellow</span>
-        <p class="cred-desc">Climate Change Specialization</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.80s">
-        <p class="cred-year">2023</p>
-        <h3 class="cred-inst">Autoría</h3>
-        <span class="cred-badge">Publicación</span>
-        <p class="cred-desc">"Las Montañas, Nuestro Futuro" — ISBN 978-987-48458-2-5</p>
-      </div>
-      <div class="cred-card reveal" style="transition-delay:0.88s">
-        <p class="cred-year">2022</p>
-        <h3 class="cred-inst">Anglo American Quellaveco</h3>
-        <span class="cred-badge">#1 Ranking</span>
-        <p class="cred-desc">Mejores prácticas entre 190+ contratistas de AAQ</p>
-      </div>
-    </div>
-    <div class="cred-quote-sep reveal">
-      <p>"Las becas no son el destino — son el combustible para llegar más lejos."</p>
-    </div>
-  </div>
-</section>
-
+<!-- VOLUNTARIADO -->
 <!-- VOLUNTARIADO -->
 <section id="voluntariado" aria-label="Voluntariado y Liderazgo">
   <div class="container">
@@ -2082,89 +1906,153 @@ footer {
   </div>
 </section>
 
-<!-- ORGANIZACIONES -->
-<section id="organizaciones" aria-label="Organizaciones Aliadas">
+
+<!-- MARQUEE -->
+
+<!-- TESTIMONIOS -->
+<!-- TESTIMONIOS (mejora 3) -->
+<section id="testimonios" aria-label="Testimonios">
   <div class="container">
-    <p class="section-label reveal">— Organizaciones —</p>
-    <h2 class="section-headline reveal">REDES Y ORGANIZACIONES ALIADAS</h2>
-    <p class="org-subheadline reveal">Parte de ecosistemas de alto impacto en Perú y el mundo.</p>
-    <div class="org-grid">
-       
-      <div class="org-card reveal" style="transition-delay:0s">
-        <div class="org-img-wrap"><img src="img/org-iimp.jpg" alt="Gabriel Lauya en IIMP" loading="lazy"></div>
-        <h3 class="org-name">Instituto de Ingenieros de Minas del Perú (IIMP)</h3>
-        <p class="org-role">Mentor</p>
-        <p class="org-period">mar. 2026 – Actualidad</p>
-        <p class="org-desc">Mentoría a nuevas generaciones de ingenieros mineros.</p>
-      </div>
-       
-      <div class="org-card reveal" style="transition-delay:0.08s">
-        <h3 class="org-name">DESCOSUR</h3>
-        <p class="org-role">Becario</p>
-        <p class="org-period">jun. 2025 – Actualidad</p>
-        <p class="org-desc">Programa de desarrollo del sur del Perú.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.16s">
-        <h3 class="org-name">Colegio de Ingenieros del Perú (CIP)</h3>
-        <p class="org-role">Mentee</p>
-        <p class="org-period">may. 2025 – Actualidad</p>
-        <p class="org-desc">Primer Programa de Mentoring de Ingeniería Ambiental del CIP.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.24s">
-        <h3 class="org-name">Ministerio de Cultura del Perú — RENTOCA</h3>
-        <p class="org-role">Facilitador</p>
-        <p class="org-period">feb. 2025 – Actualidad</p>
-        <p class="org-desc">Registro Nacional de Trabajadores y Organizaciones de la Cultura y las Artes.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.32s">
-        <h3 class="org-name">Incubadora 1551 UNMSM</h3>
-        <p class="org-role">Co-Fundador</p>
-        <p class="org-period">dic. 2024 – Actualidad</p>
-        <p class="org-desc">Ecosistema de innovación y emprendimiento de la Universidad Nacional Mayor de San Marcos.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.4s">
-        <h3 class="org-name">OMA — Organización Mundial de Apoyo a la Educación</h3>
-        <p class="org-role">Mentor</p>
-        <p class="org-period">abr. 2024 – Actualidad</p>
-        <p class="org-desc">Apoyo a jóvenes de comunidades vulnerables hacia la educación superior.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.48s">
-        <h3 class="org-name">ESAT — Centro de Investigación · UNASAM</h3>
-        <p class="org-role">Investigador</p>
-        <p class="org-period">abr. 2022 – Actualidad</p>
-        <p class="org-desc">Investigación en ciencias ambientales y tecnología aplicada al desarrollo sostenible.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.56s">
-        <h3 class="org-name">Mesa Técnica Regional Áncash</h3>
-        <p class="org-role">Miembro</p>
-        <p class="org-period">2026 – Actualidad</p>
-        <p class="org-desc">Restauración de ecosistemas a nivel regional.</p>
-      </div>
-      <div class="org-card reveal" style="transition-delay:0.64s">
-        <h3 class="org-name">Amautas Mineros Perú</h3>
-        <p class="org-role">Promotor</p>
-        <p class="org-period">2026 – Actualidad</p>
-        <p class="org-desc">Red de líderes mineros comprometidos con la sostenibilidad y el desarrollo comunitario.</p>
-      </div>
+    <p class="section-label reveal" style="text-align:center">— Testimonios —</p>
+    <h2 class="section-headline reveal" style="text-align:center">LO QUE DICEN QUIENES ME CONOCEN</h2>
+    <div class="test-grid">
+      <div class="test-card reveal"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel es un profesional excepcional con una visión única para integrar innovación tecnológica en gestión ambiental. Su liderazgo en Quellaveco fue determinante para posicionarnos como #1 entre todos los contratistas."</p><div class="test-author"><div class="test-avatar">F</div><div><div class="test-name">Freddy Amarante</div><div class="test-role">Project Manager · COSAPI / AAQ TC06</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.1s"><div class="test-quote-mark">"</div><p class="test-text">"La capacidad de Gabriel para diseñar materiales técnicos accesibles a equipos de campo es notable. En NEXA implementó estándares de biodiversidad de manera impecable."</p><div class="test-author"><div class="test-avatar">G</div><div><div class="test-name">Guillermo Chanduvi</div><div class="test-role">SSOMA Manager · COSAPI / AAQ TC06</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.2s"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel tiene un don para mentorear. Me orientó en mi postulación a PRONABEC y logré obtenerla. Su ejemplo como primer profesional de su comunidad es una inspiración para toda nuestra generación."</p><div class="test-author"><div class="test-avatar">A</div><div><div class="test-name">Alexandra Carrillo Q.</div><div class="test-role">Ingeniera Ambiental · Mentee IIMP</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.3s"><div class="test-quote-mark">"</div><p class="test-text">"El Botón de Reportabilidad que Gabriel desarrolló transformó nuestra cultura de reporte en campo. Una solución innovadora que ningún otro contratista había logrado implementar."</p><div class="test-author"><div class="test-avatar">C</div><div><div class="test-name">Carlos Muñoz</div><div class="test-role">Construction Manager · COSAPI / AAQ TC06</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.4s"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel representa el nuevo perfil de ingeniero ambiental que el sector minero peruano necesita: técnico, innovador, líder y con profundo compromiso social."</p><div class="test-author"><div class="test-avatar">I</div><div><div class="test-name">Instituto de Ingenieros de Minas</div><div class="test-role">IIMP Perú · Programa Mentoring</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.5s"><div class="test-quote-mark">"</div><p class="test-text">"Participar en el programa BRIMM de UBC junto a Gabriel confirmó lo que ya sabíamos: es un profesional de calibre internacional. Su análisis en la negociación de Mina 2 fue brillante."</p><div class="test-author"><div class="test-avatar">U</div><div><div class="test-name">Colega BRIMM 2026</div><div class="test-role">University of British Columbia · Canadá</div></div></div></div>
     </div>
-    <div class="org-quote-sep reveal">
-      <p>"El impacto más grande no lo logras solo — lo construyes con las redes correctas."</p>
+
+    <!-- FORMULARIO DE NUEVO TESTIMONIO -->
+    <div style="margin-top:60px;padding:40px;border:1px solid rgba(200,149,42,.2);border-radius:16px;background:rgba(26,74,46,.05)" class="reveal">
+      <h3 style="font-family:var(--ff-serif);font-size:22px;color:var(--gold);margin-bottom:8px" data-es="¿Trabajaste con Gabriel? Comparte tu testimonio" data-en="Did you work with Gabriel? Share your testimonial">¿Trabajaste con Gabriel? Comparte tu testimonio</h3>
+      <p style="font-family:var(--ff-sans);font-size:13px;color:var(--gray-silver);margin-bottom:28px" data-es="Tu experiencia puede inspirar a otros. Completa el formulario y será revisado para su publicación." data-en="Your experience can inspire others. Fill out the form and it will be reviewed for publication.">Tu experiencia puede inspirar a otros. Completa el formulario y será revisado para su publicación.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Tu nombre completo" data-en="Your full name">Tu nombre completo</label><input id="test-name" type="text" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none" placeholder="Nombre Apellido"></div>
+        <div><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Cargo / Empresa" data-en="Position / Company">Cargo / Empresa</label><input id="test-role" type="text" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none" placeholder="Gerente / COSAPI S.A."></div>
+      </div>
+      <div style="margin-bottom:20px"><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Tu testimonio" data-en="Your testimonial">Tu testimonio</label><textarea id="test-body" rows="4" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none;resize:vertical" data-es="Comparte tu experiencia trabajando con Gabriel..." data-en="Share your experience working with Gabriel...">Comparte tu experiencia trabajando con Gabriel...</textarea></div>
+      <button onclick="submitTestimonio()" style="font-family:var(--ff-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bg-primary);background:var(--gold);border:none;padding:14px 32px;cursor:pointer;transition:background .2s" data-es="Enviar testimonio →" data-en="Submit testimonial →">Enviar testimonio →</button>
+      <p id="test-msg" style="font-family:var(--ff-mono);font-size:11px;color:var(--neon-green);margin-top:12px;display:none"></p>
     </div>
   </div>
 </section>
 
-<!-- ASISTENTE IA -->
-<section id="asistente" aria-label="Asistente Virtual">
+
+<!-- PUBLICACIONES -->
+<!-- PUBLICACIONES (mejora 2) -->
+<section id="publicaciones" aria-label="Publicaciones y Medios">
   <div class="container">
-    <div class="chat-section-inner">
-      <p class="section-label reveal">— Asistente —</p>
-      <h2 class="section-headline reveal" style="text-align:center;">¿TIENES ALGUNA CONSULTA?</h2>
-      <p class="chat-subheadline reveal">Mi asistente virtual está disponible 24/7 para responder tus preguntas sobre servicios, disponibilidad y colaboraciones.</p>
-      <button class="btn-submit reveal" onclick="toggleChat()" style="margin-top:0;" aria-label="Abrir chat con asistente virtual">Abrir asistente virtual →</button>
+    <p class="section-label reveal">— Publicaciones y Medios —</p>
+    <h2 class="section-headline reveal">VOZ CON AUTORIDAD TÉCNICA</h2>
+    <div class="pub-grid">
+      <div class="pub-card reveal"><div class="pub-card-body"><div class="pub-type">📚 Libro publicado</div><div class="pub-title">"Las Montañas, Nuestro Futuro"</div><div class="pub-desc">Publicación sobre ecosistemas de alta montaña, cambio climático y gestión ambiental sostenible en los Andes peruanos.</div><div class="pub-meta">ISBN 978-987-48458-2-5 · 2023</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.1s"><div class="pub-card-body"><div class="pub-type">🎤 Conferencista</div><div class="pub-title">PERUMIN 35, 36 y 37 · EXPOMINA 2024</div><div class="pub-desc">Conferencista y panelista en los eventos de minería y sostenibilidad más importantes de Latinoamérica y el mundo.</div><div class="pub-meta">2022 · 2023 · 2024 · 2025</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.2s"><div class="pub-card-body"><div class="pub-type">🌍 Ponencia internacional</div><div class="pub-title">Congreso Americano de Microbiología · Argentina 2024</div><div class="pub-desc">Ponente sobre aplicaciones ambientales y biotecnología en gestión de ecosistemas mineros.</div><div class="pub-meta">Buenos Aires · 2024</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.3s"><div class="pub-card-body"><div class="pub-type">📺 Panel técnico</div><div class="pub-title">TIMDS 2026 · Innovación SSOMA</div><div class="pub-desc">Panelista sobre innovación digital en seguridad, salud ocupacional y medio ambiente en proyectos mineros de clase mundial.</div><div class="pub-meta">2026</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.4s"><div class="pub-card-body"><div class="pub-type">💼 LinkedIn · Contenido técnico</div><div class="pub-title">Artículos sobre gestión ambiental y liderazgo</div><div class="pub-desc">Más de 23,000 seguidores consumiendo contenido técnico de valor sobre ingeniería ambiental, SSOMA e innovación.</div><div class="pub-meta">23,833 seguidores · LinkedIn</div><a href="https://www.linkedin.com/in/gabriellauya/" target="_blank" class="pub-link">Ver perfil →</a></div></div>
+      <div class="pub-card reveal" style="transition-delay:.5s"><div class="pub-card-body"><div class="pub-type">🏆 Reconocimiento</div><div class="pub-title">PERUMIN Jóvenes 2025 · Joven Líder</div><div class="pub-desc">Reconocido como Joven Líder en el evento de minería más importante del Perú ante miles de asistentes.</div><div class="pub-meta">PERUMIN 37 · Arequipa · 2025</div></div></div>
     </div>
   </div>
 </section>
 
+
+<!-- GALERÍA -->
+<!-- GALERÍA (mejora 4) -->
+<section id="galeria" aria-label="Galería de Momentos">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Galería —</p>
+    <h2 class="section-headline reveal" style="text-align:center">MOMENTOS QUE DEFINEN UNA CARRERA</h2>
+    <div class="gallery-grid reveal" id="gallery-grid">
+      <div class="gallery-item" data-idx="0"><img src="img/cred-ubc.jpg" alt="UBC BRIMM 2026 — Vancouver"></div>
+      <div class="gallery-item" data-idx="1"><img src="img/cred-harvard.jpg" alt="Harvard Aspire Leader 2024"></div>
+      <div class="gallery-item" data-idx="2"><img src="img/cred-perumin.jpg" alt="PERUMIN 37 — Joven Líder 2025"></div>
+      <div class="gallery-item" data-idx="3"><img src="img/Innovador.jpg" alt="COSAPIENS — Red de Innovadores"></div>
+      <div class="gallery-item" data-idx="4"><img src="img/icam.jpg" alt="Facilitador ICAM — COSAPI/AAQ"></div>
+      <div class="gallery-item" data-idx="5"><img src="img/ReconocimientoAAQ.jpg" alt="Reconocimiento Anglo American Quellaveco"></div>
+      <div class="gallery-item" data-idx="6"><img src="img/org-iimp.jpg" alt="Instituto de Ingenieros de Minas del Perú"></div>
+      <div class="gallery-item" data-idx="7"><img src="img/vol-amautas.jpg" alt="Amautas Mineros — Mentoría"></div>
+      <div class="gallery-item" data-idx="8"><img src="img/heros.jpg" alt="Gabriel Lauya Avelino — Ingeniero Ambiental"></div>
+    </div>
+  </div>
+</section>
+<div id="lightbox" role="dialog">
+  <button id="lightbox-close">✕</button>
+  <button id="lightbox-prev">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next">›</button>
+  <div id="lightbox-caption"></div>
+</div>
+
+
+<!-- BLOG -->
+<!-- BLOG (mejora 9) -->
+<section id="blog" aria-label="Blog Técnico">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Blog Técnico —</p>
+    <h2 class="section-headline reveal" style="text-align:center">CONOCIMIENTO QUE TRANSFORMA</h2>
+    <div class="blog-grid">
+      <div class="blog-card reveal"><img class="blog-img" src="img/cred-ubc.jpg" alt="ISO 14001:2026"><div class="blog-body"><div class="blog-tag">🌿 Gestión Ambiental</div><h3 class="blog-title">ISO 14001:2026: Qué cambia y cómo preparar a tu empresa</h3><p class="blog-excerpt">La nueva versión trae cambios en gestión del riesgo, economía circular y digitalización. Los puntos clave que debes conocer como supervisor ambiental.</p><div class="blog-date">Junio 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal" style="transition-delay:.1s"><img class="blog-img" src="img/Innovador.jpg" alt="PWA SSOMA"><div class="blog-body"><div class="blog-tag">💡 Innovación SSOMA</div><h3 class="blog-title">Cómo creé una PWA de reportabilidad SSOMA sin presupuesto</h3><p class="blog-excerpt">El Botón de Reportabilidad que cambió la cultura de reporte en campo de COSAPI/AAQ. Paso a paso con herramientas gratuitas.</p><div class="blog-date">Mayo 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal" style="transition-delay:.2s"><img class="blog-img" src="img/cred-harvard.jpg" alt="Becas internacionales"><div class="blog-body"><div class="blog-tag">🎓 Liderazgo y Becas</div><h3 class="blog-title">De PRONABEC a Harvard: La ruta de las becas internacionales</h3><p class="blog-excerpt">Mi experiencia postulando a Harvard Aspire Leader, UBC BRIMM y British Council. Estrategia, documentos y lecciones aprendidas.</p><div class="blog-date">Abril 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TARIFAS -->
+<!-- TARIFAS (mejora 13) -->
+<section id="tarifas" aria-label="Paquetes y Tarifas">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Inversión —</p>
+    <h2 class="section-headline reveal" style="text-align:center">PAQUETES DE SERVICIO</h2>
+    <div class="tarifas-grid">
+      <div class="tarifa-card reveal">
+        <div class="tarifa-icon">🌱</div>
+        <div class="tarifa-name">Consultoría Puntual</div>
+        <div class="tarifa-price">Por hora · Proyecto específico</div>
+        <ul class="tarifa-items"><li>Revisión de documentos técnicos</li><li>Diagnóstico ambiental rápido</li><li>Asesoría en cumplimiento normativo</li><li>Entrega en 48-72 horas</li></ul>
+        <a href="#contacto" class="btn-tarifa">Solicitar cotización</a>
+      </div>
+      <div class="tarifa-card featured reveal" style="transition-delay:.1s">
+        <div class="tarifa-featured-badge">MÁS POPULAR</div>
+        <div class="tarifa-icon">🏔</div>
+        <div class="tarifa-name">Consultoría Integral</div>
+        <div class="tarifa-price">Mensual · Proyecto largo plazo</div>
+        <ul class="tarifa-items"><li>Gestión ambiental completa ISO 14001</li><li>Auditorías y cumplimiento normativo</li><li>Capacitaciones SSOMA al equipo</li><li>Monitoreo ambiental y reportes</li><li>Soporte continuo prioritario</li></ul>
+        <a href="#contacto" class="btn-tarifa">Hablar con Gabriel</a>
+      </div>
+      <div class="tarifa-card reveal" style="transition-delay:.2s">
+        <div class="tarifa-icon">🎓</div>
+        <div class="tarifa-name">Mentoría y Capacitación</div>
+        <div class="tarifa-price">Por sesión · Programa personalizado</div>
+        <ul class="tarifa-items"><li>Mentoría 1:1 para ingenieros</li><li>Talleres grupales SSOMA</li><li>Orientación en becas internacionales</li><li>Coaching de marca personal</li></ul>
+        <a href="https://wa.me/51918978660" class="btn-tarifa">Agendar sesión</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;font-family:var(--ff-mono);font-size:11px;color:var(--gray-silver);letter-spacing:.08em">* Tarifas coordinadas directamente. Contáctame para una propuesta personalizada sin compromiso.</p>
+  </div>
+</section>
+
+
+<!-- CHAT -->
+
+<!-- AGENDA -->
+<!-- AGENDA (mejora 8) -->
+<section id="agenda" aria-label="Agendar reunión">
+  <div class="container">
+    <div class="agenda-inner">
+      <p class="section-label reveal">— Agenda —</p>
+      <h2 class="section-headline reveal">¿HABLAMOS?</h2>
+      <p class="agenda-sub reveal">Agenda una llamada de 30 minutos sin compromiso. Conversemos sobre tu proyecto, consultoría, capacitación o simplemente para conocernos.</p>
+      <a href="https://wa.me/51918978660?text=Hola%20Gabriel%2C%20quisiera%20agendar%20una%20llamada%20contigo." target="_blank" class="btn-calendly reveal">📅 Agendar llamada por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACTO -->
 <!-- CONTACTO -->
 <section id="contacto" aria-label="Solicitar Servicios">
   <div class="container">
@@ -2278,29 +2166,11 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer aria-label="Pie de página">
-  <p class="footer-name">Gabriel Lauya Avelino</p>
-  <p class="footer-sub">Ingeniero Ambiental CIP · Consultor Internacional · Fundador BIOZENIT S.A.C.</p>
-  <div class="footer-socials" role="list">
-    <a href="https://www.linkedin.com/in/gabriellauya/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    </a>
-    <a href="https://www.facebook.com/gabriellauyaa" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
-    <a href="https://wa.me/51918978660" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
-    <a href="mailto:lauya.ambiental.30@gmail.com" class="social-icon" aria-label="Email" role="listitem">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-    </a>
-  </div>
-  <div class="footer-divider" aria-hidden="true"></div>
-  <p class="footer-copy">© 2026 Gabriel Lauya Avelino · BIOZENIT S.A.C. · Todos los derechos reservados.</p>
-</footer>
 
-<!-- CHAT FLOTANTE -->
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+
 <!-- POPUP EXIT (mejora 11) -->
 <div id="exit-popup" role="dialog">
   <div class="popup-box">
@@ -2686,16 +2556,39 @@ document.querySelectorAll('.count-up').forEach(el=>countObs.observe(el));
 // ── MODO CLARO/OSCURO (mejora 6) ──
 const modeBtn=document.getElementById('mode-toggle');
 let lightMode=false;
-if(modeBtn)modeBtn.addEventListener('click',()=>{lightMode=!lightMode;document.body.setAttribute('data-mode',lightMode?'light':'');modeBtn.textContent=lightMode?'🌙':'☀️'});
+if(modeBtn)modeBtn.addEventListener('click',()=>{
+  lightMode=!lightMode;
+  document.body.classList.toggle('light-mode',lightMode);
+  modeBtn.textContent=lightMode?'🌙':'☀️';
+  localStorage.setItem('gla_mode',lightMode?'light':'dark');
+});
+if(localStorage.getItem('gla_mode')==='light'){lightMode=true;document.body.classList.add('light-mode');if(modeBtn)modeBtn.textContent='🌙';}
 
 // ── MULTIIDIOMA (mejora 10) ──
 let currentLang='es';
 const langBtn=document.getElementById('lang-toggle');
+function applyLang(){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    const txt=el.getAttribute('data-'+currentLang);
+    if(txt!==null)el.innerHTML=txt;
+  });
+  document.documentElement.setAttribute('lang',currentLang);
+  // Update placeholders
+  document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(el=>{
+    const esPh=el.getAttribute('data-ph-es');
+    const enPh=el.getAttribute('data-ph-en');
+    if(currentLang==='en'&&enPh)el.placeholder=enPh;
+    else if(esPh)el.placeholder=esPh;
+  });
+}
 if(langBtn)langBtn.addEventListener('click',function(){
   currentLang=currentLang==='es'?'en':'es';
   this.textContent=currentLang==='es'?'EN':'ES';
-  document.querySelectorAll('[data-es]').forEach(el=>{const txt=el.getAttribute('data-'+currentLang);if(txt)el.innerHTML=txt});
+  applyLang();
+  localStorage.setItem('gla_lang',currentLang);
 });
+const savedLang=localStorage.getItem('gla_lang');
+if(savedLang&&savedLang!=='es'){currentLang=savedLang;if(langBtn)langBtn.textContent='ES';setTimeout(applyLang,100);}
 
 // ── TEMAS DE COLOR (mejora 1+5) ──
 let currentTheme=0;
@@ -2739,6 +2632,10 @@ setInterval(()=>{currentTheme=(currentTheme+1)%4;applyTheme()},60000);
   const pd=document.getElementById('popup-dismiss');if(pd)pd.addEventListener('click',()=>popup.classList.remove('show'));
   popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('show')});
 })();
+
+// ── BACK TO TOP ──
+const backTop=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{if(backTop)backTop.style.display=window.scrollY>600?'flex':'none';},{passive:true});
 
 // ── SLIDESHOW (mejora 2) ──
 (function(){
