@@ -1086,6 +1086,47 @@ footer {
   .service-row:hover .service-header { transform: none; }
 }
 
+/* ═══════════════════════════════════════════
+   FOTOS EN CREDENCIALES, VOLUNTARIADO Y ORGS
+═══════════════════════════════════════════ */
+.cred-img-wrap {
+  width: 100%; height: 160px;
+  overflow: hidden; border-radius: 6px;
+  margin-bottom: 16px;
+}
+.cred-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  filter: grayscale(15%);
+  transition: transform 0.4s ease, filter 0.3s;
+}
+.cred-card:hover .cred-img-wrap img {
+  transform: scale(1.05); filter: grayscale(0%);
+}
+.vol-img-wrap {
+  margin-top: 14px;
+  width: 100%; max-width: 480px; height: 220px;
+  overflow: hidden; border-radius: 8px;
+  border: 1px solid rgba(200,149,42,0.2);
+}
+.vol-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  transition: transform 0.4s ease;
+}
+.vol-item:hover .vol-img-wrap img { transform: scale(1.04); }
+.org-img-wrap {
+  width: 100%; height: 140px;
+  overflow: hidden; border-radius: 6px;
+  margin-bottom: 14px;
+}
+.org-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  transition: transform 0.4s ease;
+}
+.org-card:hover .org-img-wrap img { transform: scale(1.05); }
+
 /* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -1124,7 +1165,7 @@ footer {
 
     <!-- FOTO PROTAGÓNICA EN CÍRCULO DORADO -->
     <div class="hero-photo-circle">
-      <img id="hero-photo" src="" alt="Gabriel Lauya Avelino">
+      <img id="hero-photo" src="img/hero.jpg" alt="Gabriel Lauya Avelino">
     </div>
 
     <!-- COLUMNA DE TEXTO -->
@@ -1557,6 +1598,7 @@ footer {
     <h2 class="section-headline reveal">RECONOCIMIENTO DE GABRIEL </h2>
     <div class="cred-grid">
       <div class="cred-card reveal" style="transition-delay:0s">
+        <div class="cred-img-wrap"><img src="img/cred-ubc.jpg" alt="Gabriel Lauya en UBC BRIMM" loading="lazy"></div>
         <p class="cred-year">2026</p>
         <h3 class="cred-inst">University of British Columbia</h3>
         <span class="cred-badge">Fellow</span>
@@ -1593,12 +1635,14 @@ footer {
         <p class="cred-desc">Gestión y Manejo de Ecosistemas</p>
       </div>
       <div class="cred-card reveal" style="transition-delay:0.48s">
+        <div class="cred-img-wrap"><img src="img/cred-perumin.jpg" alt="Gabriel Lauya en PERUMIN 37" loading="lazy"></div>
         <p class="cred-year">2025</p>
         <h3 class="cred-inst">PERUMIN 37</h3>
         <span class="cred-badge">Joven Líder</span>
         <p class="cred-desc">PERUMIN Jóvenes</p>
       </div>
       <div class="cred-card reveal" style="transition-delay:0.56s">
+        <div class="cred-img-wrap"><img src="img/cred-harvard.jpg" alt="Gabriel Lauya en Harvard Business School" loading="lazy"></div>
         <p class="cred-year">2024</p>
         <h3 class="cred-inst">Harvard Business School</h3>
         <span class="cred-badge">Fellow</span>
@@ -1649,6 +1693,7 @@ footer {
         <h3 class="vol-title">Mentor</h3>
         <p class="vol-org">Amautas Mineros</p>
         <p class="vol-desc">Mentoría a jóvenes profesionales del sector minero para fortalecer su desarrollo técnico y humano.</p>
+        <div class="vol-img-wrap"><img src="img/vol-amautas.jpg" alt="Gabriel Lauya en Amautas Mineros" loading="lazy"></div>
       </div>
 
       <div class="vol-item">
@@ -1665,6 +1710,7 @@ footer {
         <h3 class="vol-title">Mentor</h3>
         <p class="vol-org">Instituto de Ingenieros de Minas del Perú (IIMP)</p>
         <p class="vol-desc">Mentoría profesional para ingenieros en formación del sector minero peruano.</p>
+        <div class="vol-img-wrap"><img src="img/vol-amautas.jpg" alt="Gabriel Lauya en IIMP" loading="lazy"></div>
       </div>
 
       <div class="vol-item">
@@ -1751,6 +1797,7 @@ footer {
     <p class="org-subheadline reveal">Parte de ecosistemas de alto impacto en Perú y el mundo.</p>
     <div class="org-grid">
       <div class="org-card reveal" style="transition-delay:0s">
+        <div class="org-img-wrap"><img src="img/org-iimp.jpg" alt="Gabriel Lauya en IIMP" loading="lazy"></div>
         <h3 class="org-name">Instituto de Ingenieros de Minas del Perú (IIMP)</h3>
         <p class="org-role">Mentor</p>
         <p class="org-period">mar. 2026 – Actualidad</p>
