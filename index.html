@@ -27,6 +27,34 @@
   --ff-sans: 'DM Sans', sans-serif;
   --ff-mono: 'JetBrains Mono', monospace;
 }
+/* ═══════════════════════════════════════════
+   TEMAS DE COLOR (rotan cada 60s via JS)
+═══════════════════════════════════════════ */
+/* Tema 0: Verde oscuro + Dorado (original) */
+body[data-theme="0"] {
+  --bg-primary:#0A0F0D;--bg-secondary:#0F1612;--green-emerald:#1A4A2E;
+  --gold:#C8952A;--gold-light:#E8B84B;--white-mineral:#F5F5F0;
+  --gray-silver:#8A9A90;--neon-green:#2DFF8E;
+}
+/* Tema 1: Azul marino + Cobre */
+body[data-theme="1"] {
+  --bg-primary:#080D14;--bg-secondary:#0D1520;--green-emerald:#1A2E4A;
+  --gold:#B87333;--gold-light:#D4924A;--white-mineral:#F0F2F5;
+  --gray-silver:#8A95A0;--neon-green:#4DB8FF;
+}
+/* Tema 2: Carbón + Plata + Verde neón */
+body[data-theme="2"] {
+  --bg-primary:#0D0D0D;--bg-secondary:#141414;--green-emerald:#2A2A2A;
+  --gold:#A8A8A8;--gold-light:#D0D0D0;--white-mineral:#FFFFFF;
+  --gray-silver:#888888;--neon-green:#00FF41;
+}
+/* Tema 3: Vino oscuro + Dorado brillante */
+body[data-theme="3"] {
+  --bg-primary:#0F080D;--bg-secondary:#180D14;--green-emerald:#3A1A2E;
+  --gold:#D4AF37;--gold-light:#F0C040;--white-mineral:#F5F0F2;
+  --gray-silver:#9A8A90;--neon-green:#FF6B9D;
+}
+
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   background: var(--bg-primary);
@@ -35,6 +63,7 @@ body {
   font-weight: 300;
   overflow-x: hidden;
   cursor: none;
+  transition: background 2s ease, color 2s ease;
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; }
@@ -480,74 +509,59 @@ section { padding: 100px 0; }
 }
 
 /* ═══════════════════════════════════════════
-   SERVICIOS
+   SERVICIOS — GRID COMPACTO
 ═══════════════════════════════════════════ */
 #servicios { background: var(--bg-secondary); }
-.services-list { position: relative; }
-.service-row {
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.service-card {
+  background: rgba(26,74,46,0.07);
+  border: 1px solid rgba(200,149,42,0.12);
+  border-radius: 12px; padding: 28px 24px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   position: relative; overflow: hidden;
-  border-bottom: 1px solid rgba(200,149,42,0.12);
-  cursor: default;
-  transition: background 0.3s;
 }
-.service-row:first-child { border-top: 1px solid rgba(200,149,42,0.12); }
-.service-header {
-  display: flex; align-items: center; gap: 24px;
-  padding: 28px 0;
-  transition: transform 0.3s;
+.service-card::before {
+  content: attr(data-num);
+  position: absolute; right: 16px; top: 12px;
+  font-family: var(--ff-serif); font-size: 64px; font-weight: 700;
+  color: var(--gold); opacity: 0.04; line-height: 1;
+  pointer-events: none;
 }
-.service-row:hover .service-header { transform: translateX(12px); }
-.service-row::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width 0.4s ease-out;
+.service-card:hover {
+  border-color: rgba(200,149,42,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
 }
-.service-row:hover::after { width: 100%; }
-.service-num {
-  font-family: var(--ff-mono); font-size: 11px;
-  color: rgba(200,149,42,0.4); letter-spacing: 0.1em;
-  flex-shrink: 0; width: 36px;
-}
-.service-name {
-  font-family: var(--ff-serif); font-size: clamp(18px, 2vw, 24px);
-  font-weight: 600; color: var(--white-mineral);
-  flex: 1;
-}
-.service-tag {
+.service-card-tag {
   font-family: var(--ff-mono); font-size: 9px;
   letter-spacing: 0.12em; color: var(--gold);
   border: 1px solid rgba(200,149,42,0.3);
-  padding: 4px 12px; flex-shrink: 0;
-  text-transform: uppercase;
+  padding: 3px 10px; display: inline-block;
+  text-transform: uppercase; margin-bottom: 12px;
 }
-.service-arrow {
-  font-size: 18px; color: var(--gold);
-  opacity: 0.4; transition: opacity 0.3s, transform 0.3s;
-  flex-shrink: 0;
+.service-card-name {
+  font-family: var(--ff-serif); font-size: 18px;
+  font-weight: 600; color: var(--white-mineral);
+  margin-bottom: 14px; line-height: 1.3;
 }
-.service-row:hover .service-arrow { opacity: 1; transform: translateX(4px); }
-.service-expand {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s ease-out, padding 0.3s;
-  padding: 0 60px;
+.service-card-items {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 6px;
 }
-.service-row:hover .service-expand {
-  max-height: 200px;
-  padding: 0 60px 24px;
+.service-card-items li {
+  font-family: var(--ff-sans); font-size: 12px;
+  color: var(--gray-silver); line-height: 1.5;
+  padding-left: 14px; position: relative;
 }
-.service-expand p {
-  font-family: var(--ff-sans); font-size: 14px;
-  color: var(--gray-silver); line-height: 1.75;
+.service-card-items li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--gold); font-size: 10px;
 }
-.service-num-bg {
-  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-  font-family: var(--ff-serif); font-size: 120px; font-weight: 700;
-  color: var(--gold); opacity: 0.03;
-  pointer-events: none; user-select: none;
-  transition: opacity 0.3s;
-}
-.service-row:hover .service-num-bg { opacity: 0.06; }
+
 
 /* ═══════════════════════════════════════════
    SECTORES
@@ -1343,136 +1357,126 @@ footer {
   <div class="container">
     <p class="section-label reveal">— SERVICIOS PROFESIONALES —</p>
     <h2 class="section-headline reveal">ESTO ES LO QUE PUEDO HACER POR TI</h2>
-    <div class="services-list reveal">
+    <div class="services-grid reveal">
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">01</span>
-        <div class="service-header">
-          <span class="service-num">01</span>
-          <span class="service-name">Gestión Ambiental Estratégica</span>
-          <span class="service-tag">Ambiental</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p> ++ Diseño e implementación de Sistemas de Gestión Ambiental bajo ISO 14001:2026 en modalidad digital y automatizada. Incluye diagnóstico de brechas, planificación estratégica, elaboración de IGA, EIA, DAA, FITSA, PLANEFA, gestión de residuos y recursos hídricos, controles operacionales y tableros KPI con Power BI. Automatización con Power Automate, N8N y Make. Modalidad presencial y remota para proyectos en Perú y LATAM.</p>
-        </div>
+      <div class="service-card" data-num="01">
+        <span class="service-card-tag">Ambiental</span>
+        <h3 class="service-card-name">Gestión Ambiental Estratégica</h3>
+        <ul class="service-card-items">
+          <li>ISO 14001:2026 digital y automatizada</li>
+          <li>EIA, DAA, FITSA, PLANEFA, IGA</li>
+          <li>Gestión de residuos y recursos hídricos</li>
+          <li>KPIs ambientales con Power BI</li>
+          <li>Automatización N8N, Make, Power Automate</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">02</span>
-        <div class="service-header">
-          <span class="service-num">02</span>
-          <span class="service-name">Cumplimiento Normativo y Auditorías</span>
-          <span class="service-tag">Normativo</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Preparación y acompañamiento integral en fiscalizaciones ante OEFA, ANA y SUNAFIL. Auditorías internas y externas bajo ISO 14001:2026 e ISO 45001:2018. Gestión de no conformidades, planes de acción correctiva e investigación de incidentes bajo metodología ICAM. Revisión de cumplimiento D.S. 024-2016-EM y D.S. 040-2014-EM.</p>
-        </div>
+      <div class="service-card" data-num="02">
+        <span class="service-card-tag">Normativo</span>
+        <h3 class="service-card-name">Cumplimiento Normativo y Auditorías</h3>
+        <ul class="service-card-items">
+          <li>Fiscalizaciones OEFA, ANA y SUNAFIL</li>
+          <li>Auditorías ISO 14001 e ISO 45001:2018</li>
+          <li>Gestión de no conformidades</li>
+          <li>Investigación ICAM de incidentes</li>
+          <li>Cumplimiento D.S. 024 y 040-EM</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">03</span>
-        <div class="service-header">
-          <span class="service-num">03</span>
-          <span class="service-name">Monitoreo Ambiental y SIG</span>
-          <span class="service-tag">Técnico</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Planificación y ejecución de monitoreos de calidad de agua, aire, emisiones, ruido y suelos. Modelamiento atmosférico (AERMOD, CALPUFF) y acústico (SoundPlan). Cartografía avanzada y análisis espacial con ArcGIS y QGIS. Teledetección aplicada y elaboración de informes técnicos para auditorías y reportes de sostenibilidad.</p>
-        </div>
+      <div class="service-card" data-num="03">
+        <span class="service-card-tag">Técnico</span>
+        <h3 class="service-card-name">Monitoreo Ambiental y SIG</h3>
+        <ul class="service-card-items">
+          <li>Calidad de agua, aire, ruido y suelos</li>
+          <li>Modelamiento AERMOD / CALPUFF</li>
+          <li>Cartografía ArcGIS y QGIS</li>
+          <li>Teledetección aplicada</li>
+          <li>Informes para auditorías y sostenibilidad</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">04</span>
-        <div class="service-header">
-          <span class="service-num">04</span>
-          <span class="service-name">Innovación Digital y Automatización</span>
-          <span class="service-tag">Innovación</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Desarrollo de Progressive Web Apps (PWA) para gestión ambiental y reportabilidad SSOMA en campo, sin papel y en tiempo real. Dashboards ambientales con Power BI. Automatización de flujos con N8N, Make y Power Automate. Prompt Engineering aplicado a procesos SSOMA. Desarrollo en JavaScript y Python para análisis de datos ambientales.</p>
-        </div>
+      <div class="service-card" data-num="04">
+        <span class="service-card-tag">Innovación</span>
+        <h3 class="service-card-name">Innovación Digital y Automatización</h3>
+        <ul class="service-card-items">
+          <li>PWA para reportabilidad SSOMA en campo</li>
+          <li>Dashboards ambientales Power BI</li>
+          <li>Automatización con N8N y Make</li>
+          <li>Prompt Engineering aplicado a SSOMA</li>
+          <li>Análisis de datos con Python y JS</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">05</span>
-        <div class="service-header">
-          <span class="service-num">05</span>
-          <span class="service-name">Capacitación y Entrenamiento SSOMA</span>
-          <span class="service-tag">Capacitación</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Diseño y facilitación de programas de capacitación en seguridad, salud ocupacional y medio ambiente con metodología andragógica. Inducción completa Anexo 5 y 6 conforme al D.S. 024-2016-EM. Facilitación de investigación de incidentes ICAM. Programas de cultura de seguridad y formación de Embajadores SHE. Talleres para equipos de hasta 500 personas.</p>
-        </div>
+      <div class="service-card" data-num="05">
+        <span class="service-card-tag">Capacitación</span>
+        <h3 class="service-card-name">Capacitación y Entrenamiento SSOMA</h3>
+        <ul class="service-card-items">
+          <li>Inducción Anexo 5 y 6 D.S. 024-EM</li>
+          <li>Facilitación de investigación ICAM</li>
+          <li>Embajadores SHE y cultura de seguridad</li>
+          <li>Talleres para equipos hasta 500 personas</li>
+          <li>Metodología andragógica certificada</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">06</span>
-        <div class="service-header">
-          <span class="service-num">06</span>
-          <span class="service-name">Consultoría Socioambiental</span>
-          <span class="service-tag">Social</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Diseño de estrategias de gestión de relaciones comunitarias para proyectos mineros y de infraestructura. Mapeo de actores y análisis de riesgos socioambientales. Facilitación de mesas de concertación y talleres de participación ciudadana. Monitoreos ambientales participativos con comunidades locales e indígenas.</p>
-        </div>
+      <div class="service-card" data-num="06">
+        <span class="service-card-tag">Social</span>
+        <h3 class="service-card-name">Consultoría Socioambiental</h3>
+        <ul class="service-card-items">
+          <li>Gestión de relaciones comunitarias</li>
+          <li>Mapeo de actores y riesgos sociales</li>
+          <li>Mesas de concertación y participación</li>
+          <li>Monitoreos ambientales participativos</li>
+          <li>Comunidades indígenas y campesinas</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">07</span>
-        <div class="service-header">
-          <span class="service-num">07</span>
-          <span class="service-name">Impacto Social y Desarrollo Comunitario</span>
-          <span class="service-tag">Comunidad</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Diseño de proyectos sociales con enfoque territorial y medición de impacto. Coordinación de convenios marco entre comunidades, universidades y empresas. Asesoría a comunidades campesinas y nativas para participación estratégica en proyectos extractivos. Planes de gestión de riesgos y adaptación al cambio climático. Metodologías: PHVA, Marco Lógico, Teoría del Cambio.</p>
-        </div>
+      <div class="service-card" data-num="07">
+        <span class="service-card-tag">Comunidad</span>
+        <h3 class="service-card-name">Impacto Social y Desarrollo</h3>
+        <ul class="service-card-items">
+          <li>Proyectos con medición de impacto</li>
+          <li>Convenios universidad–empresa–comunidad</li>
+          <li>Adaptación al cambio climático</li>
+          <li>Marco Lógico y Teoría del Cambio</li>
+          <li>PHVA aplicado a proyectos sociales</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">08</span>
-        <div class="service-header">
-          <span class="service-num">08</span>
-          <span class="service-name">Mentoría y Liderazgo Profesional</span>
-          <span class="service-tag">Liderazgo</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Mentoría estructurada para ingenieros ambientales, supervisores SSOMA y jóvenes profesionales del sector minero. Desarrollo de competencias de liderazgo técnico y gestión de equipos. Orientación en postulación a becas nacionales e internacionales (PRONABEC, Harvard, UBC, British Council, Zurich).</p>
-        </div>
+      <div class="service-card" data-num="08">
+        <span class="service-card-tag">Liderazgo</span>
+        <h3 class="service-card-name">Mentoría y Liderazgo Profesional</h3>
+        <ul class="service-card-items">
+          <li>Mentoría estructurada para ingenieros</li>
+          <li>Desarrollo de liderazgo técnico</li>
+          <li>Orientación en becas internacionales</li>
+          <li>Harvard · UBC · British Council · Zurich</li>
+          <li>PRONABEC y programas nacionales</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">09</span>
-        <div class="service-header">
-          <span class="service-num">09</span>
-          <span class="service-name">Coaching Ejecutivo y Marca Personal</span>
-          <span class="service-tag">Coaching</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Coaching de carrera para profesionales técnicos que buscan escalar a roles de liderazgo o consultoría internacional. Estrategia integral de marca personal en LinkedIn y redes para ingenieros y consultores. Diseño de CVs, perfiles y portafolios de alto impacto para mercados nacionales e internacionales.</p>
-        </div>
+      <div class="service-card" data-num="09">
+        <span class="service-card-tag">Coaching</span>
+        <h3 class="service-card-name">Coaching Ejecutivo y Marca Personal</h3>
+        <ul class="service-card-items">
+          <li>Coaching para roles de liderazgo</li>
+          <li>Estrategia de marca personal LinkedIn</li>
+          <li>CVs y portafolios de alto impacto</li>
+          <li>Transición a consultoría internacional</li>
+          <li>Posicionamiento en mercados globales</li>
+        </ul>
       </div>
 
-      <div class="service-row" tabindex="0">
-        <span class="service-num-bg" aria-hidden="true">10</span>
-        <div class="service-header">
-          <span class="service-num">10</span>
-          <span class="service-name">Conferencias y Paneles Técnicos</span>
-          <span class="service-tag">Conferencias</span>
-          <span class="service-arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="service-expand">
-          <p>Presentaciones magistrales y paneles técnicos sobre gestión ambiental, sostenibilidad minera, innovación SSOMA y liderazgo. Conferencista en PERUMIN 35, 36 y 37. Panelista en EXPOMINA PERÚ 2024 y TIMDS 2026. Ponente en el Congreso Americano de Microbiología, Argentina 2024. Disponible presencial y virtual en Perú y el exterior.</p>
-        </div>
+      <div class="service-card" data-num="10">
+        <span class="service-card-tag">Conferencias</span>
+        <h3 class="service-card-name">Conferencias y Paneles Técnicos</h3>
+        <ul class="service-card-items">
+          <li>PERUMIN 35, 36 y 37 · EXPOMINA 2024</li>
+          <li>TIMDS 2026 · Congreso Microbiología AR</li>
+          <li>Sostenibilidad minera e innovación SSOMA</li>
+          <li>Presencial y virtual · Perú y exterior</li>
+          <li>Panelista y conferencista magistral</li>
+        </ul>
       </div>
 
     </div>
@@ -2361,6 +2365,93 @@ document.getElementById('email-copy').addEventListener('click', function(e) {
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('[style*="animation"]').forEach(el => el.style.animation = 'none');
 }
+
+// ═══════════════════════════════════════
+// ROTACIÓN DE TEMAS DE COLOR (cada 60s)
+// ═══════════════════════════════════════
+(function() {
+  const themes = ['0','1','2','3'];
+  let cur = 0;
+  document.body.setAttribute('data-theme', '0');
+
+  // Indicador visual (4 puntitos esquina inferior izquierda)
+  const ind = document.createElement('div');
+  ind.style.cssText = 'position:fixed;bottom:20px;left:20px;z-index:9998;display:flex;gap:6px;align-items:center;';
+  const colors = ['#C8952A','#B87333','#A8A8A8','#D4AF37'];
+  themes.forEach((t,i) => {
+    const dot = document.createElement('div');
+    dot.style.cssText = `width:7px;height:7px;border-radius:50%;background:${colors[i]};opacity:${i===0?1:0.3};cursor:pointer;transition:opacity .3s,transform .3s;`;
+    dot.title = ['Verde','Azul','Gris','Vino'][i];
+    dot.onclick = () => { cur = i; apply(); };
+    ind.appendChild(dot);
+  });
+  document.body.appendChild(ind);
+
+  function apply() {
+    document.body.setAttribute('data-theme', themes[cur]);
+    ind.querySelectorAll('div').forEach((d,i) => {
+      d.style.opacity = i===cur ? '1':'0.3';
+      d.style.transform = i===cur ? 'scale(1.5)':'scale(1)';
+    });
+  }
+  setInterval(() => { cur=(cur+1)%4; apply(); }, 60000);
+})();
+
+// ═══════════════════════════════════════
+// SLIDESHOW DE FOTOS (cada 30s)
+// ═══════════════════════════════════════
+(function() {
+  // AGREGA AQUÍ TODAS TUS FOTOS POR SECCIÓN
+  // Formato: 'id-slide': ['foto1.jpg','foto2.jpg',...]
+  const sets = {
+    'hero':         ['img/heros.jpg'],
+    'cred-ubc':     ['img/cred-ubc.jpg'],
+    'cred-cosapi1': ['img/Innovador.jpg'],
+    'cred-cosapi2': ['img/icam.jpg'],
+    'cred-perumin': ['img/cred-perumin.jpg'],
+    'cred-harvard': ['img/cred-harvard.jpg'],
+    'vol-amautas':  ['img/vol-amautas.jpg'],
+    'vol-iimp':     ['img/vol-amautas.jpg'],
+    'org-iimp':     ['img/org-iimp.jpg'],
+  };
+  const idx = {};
+  Object.keys(sets).forEach(k => idx[k] = 0);
+
+  // Asigna data-slide a cada imagen según alt/contexto
+  document.getElementById('hero-photo') && (document.getElementById('hero-photo').dataset.slide = 'hero');
+  document.querySelectorAll('.cred-img-wrap img').forEach(img => {
+    const a = img.alt.toLowerCase();
+    if (a.includes('ubc')||a.includes('brimm')) img.dataset.slide='cred-ubc';
+    else if (a.includes('innovador')||a.includes('cosapiens')) img.dataset.slide='cred-cosapi1';
+    else if (a.includes('icam')||a.includes('facilitador')) img.dataset.slide='cred-cosapi2';
+    else if (a.includes('perumin')) img.dataset.slide='cred-perumin';
+    else if (a.includes('harvard')) img.dataset.slide='cred-harvard';
+  });
+  document.querySelectorAll('.vol-img-wrap img').forEach(img => {
+    const a = img.alt.toLowerCase();
+    img.dataset.slide = a.includes('iimp') ? 'vol-iimp' : 'vol-amautas';
+  });
+  document.querySelectorAll('.org-img-wrap img').forEach(img => {
+    img.dataset.slide = 'org-iimp';
+  });
+
+  // Transición suave
+  const s = document.createElement('style');
+  s.textContent = '[data-slide]{transition:opacity .5s ease;}';
+  document.head.appendChild(s);
+
+  function rotate() {
+    document.querySelectorAll('[data-slide]').forEach(img => {
+      const id = img.dataset.slide;
+      const set = sets[id];
+      if (!set||set.length<2) return;
+      idx[id] = (idx[id]+1) % set.length;
+      img.style.opacity='0';
+      setTimeout(()=>{ img.src=set[idx[id]]; img.style.opacity='1'; }, 500);
+    });
+  }
+  setInterval(rotate, 30000);
+})();
 </script>
 </body>
 </html>
