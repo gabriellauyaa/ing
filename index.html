@@ -4,7 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gabriel Lauya Avelino · Ingeniero Ambiental | Consultor Minero</title>
-<meta name="description" content="Gabriel Lauya Avelino — Ingeniero Ambiental Colegiado CIP Perú. Consultor Ambiental & Minero, Líder en Innovación SSOMA, Conferencista Internacional. Fundador de BIOZENIT S.A.C.">
+<meta name="description" content="Gabriel Lauya Avelino — Ingeniero Ambiental CIP. UBC BRIMM Fellow, Harvard Aspire Leader, #1 Anglo American 190+ contratistas. Consultor Minero, Conferencista Internacional.">
+<meta name="keywords" content="ingeniero ambiental peru, consultor ambiental minero, SSOMA, ISO 14001, Gabriel Lauya">
+<meta name="author" content="Gabriel Lauya Avelino">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Gabriel Lauya Avelino · Ingeniero Ambiental | Consultor Minero">
+<meta property="og:description" content="UBC BRIMM Fellow · Harvard Aspire Leader · #1 Anglo American 190+ contratistas.">
+<meta property="og:image" content="img/heros.jpg">
+<meta property="og:url" content="https://gabriellauyaa.github.io/ing">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gabriel Lauya Avelino · Ingeniero Ambiental">
+<meta name="twitter:image" content="img/heros.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Gabriel Lauya Avelino","jobTitle":"Ingeniero Ambiental | Consultor Minero","url":"https://gabriellauyaa.github.io/ing","image":"img/heros.jpg","sameAs":["https://www.linkedin.com/in/gabriellauya/"],"address":{"@type":"PostalAddress","addressCountry":"PE"},"telephone":"+51918978660","email":"lauya.ambiental.30@gmail.com"}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -68,6 +82,124 @@ body {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; }
 button { cursor: none; }
+
+/* VISIT COUNTER (mejora 1) */
+#visit-counter{position:fixed;top:80px;right:20px;z-index:900;background:rgba(10,15,13,.85);border:1px solid rgba(200,149,42,.3);border-radius:8px;padding:8px 14px;text-align:center;backdrop-filter:blur(10px)}
+#visit-counter .vc-num{font-family:var(--ff-mono);font-size:18px;color:var(--gold);line-height:1}
+#visit-counter .vc-label{font-family:var(--ff-mono);font-size:8px;color:var(--gray-silver);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+/* LIGHT MODE (mejora 6) */
+[data-mode="light"]{--bg-primary:#F5F5F0;--bg-secondary:#EBEBE5;--green-emerald:#D4E8DA;--gold:#8B6914;--gold-light:#A07820;--white-mineral:#1A1A1A;--gray-silver:#555;--neon-green:#1A7A40}
+/* NAV CONTROLS */
+.nav-controls{display:flex;align-items:center;gap:12px}
+#lang-toggle{font-family:var(--ff-mono);font-size:10px;color:var(--gold);border:1px solid rgba(200,149,42,.4);background:transparent;padding:5px 10px;letter-spacing:.1em;transition:background .2s,color .2s}
+#lang-toggle:hover{background:var(--gold);color:var(--bg-primary)}
+#mode-toggle{width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,149,42,.4);background:transparent;color:var(--gold);font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#mode-toggle:hover{background:var(--gold);color:var(--bg-primary)}
+.btn-cv{font-family:var(--ff-mono);font-size:9px;color:var(--gold);border:1px solid rgba(200,149,42,.5);background:rgba(200,149,42,.06);padding:6px 14px;letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s}
+.btn-cv:hover{background:var(--gold);color:var(--bg-primary)}
+/* IMPACTO EN NÚMEROS (mejora 4) */
+#impacto{background:var(--bg-primary);padding:80px 0}
+.impacto-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.impacto-item{padding:32px 16px;border:1px solid rgba(200,149,42,.1);border-radius:12px;background:rgba(26,74,46,.06);transition:border-color .3s,transform .3s;text-align:center}
+.impacto-item:hover{border-color:rgba(200,149,42,.4);transform:translateY(-4px)}
+.impacto-num{font-family:var(--ff-mono);font-size:clamp(40px,5vw,64px);font-weight:500;color:var(--gold);line-height:1}
+.impacto-suffix{font-size:.6em;vertical-align:super}
+.impacto-label{font-family:var(--ff-sans);font-size:12px;color:var(--gray-silver);margin-top:10px;letter-spacing:.08em;text-transform:uppercase;line-height:1.5}
+/* TARIFAS (mejora 13) */
+#tarifas{background:var(--bg-primary);padding:100px 0}
+.tarifas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tarifa-card{border:1px solid rgba(200,149,42,.15);border-radius:16px;padding:36px 28px;background:rgba(26,74,46,.06);text-align:center;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative}
+.tarifa-card.featured{border-color:rgba(200,149,42,.5);box-shadow:0 0 40px rgba(200,149,42,.12)}
+.tarifa-featured-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);font-family:var(--ff-mono);font-size:9px;background:var(--gold);color:var(--bg-primary);padding:4px 16px;letter-spacing:.1em;text-transform:uppercase}
+.tarifa-card:hover{border-color:rgba(200,149,42,.5);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.tarifa-icon{font-size:40px;margin-bottom:16px}
+.tarifa-name{font-family:var(--ff-serif);font-size:22px;font-weight:700;color:var(--white-mineral);margin-bottom:8px}
+.tarifa-price{font-family:var(--ff-mono);font-size:13px;color:var(--gold);letter-spacing:.08em;margin-bottom:20px}
+.tarifa-items{list-style:none;text-align:left;margin-bottom:28px}
+.tarifa-items li{font-family:var(--ff-sans);font-size:13px;color:var(--gray-silver);padding:8px 0 8px 18px;border-bottom:1px solid rgba(200,149,42,.08);position:relative}
+.tarifa-items li::before{content:"✓";position:absolute;left:0;color:var(--gold)}
+.btn-tarifa{display:block;font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:12px 24px;transition:background .3s,color .3s}
+.btn-tarifa:hover{background:var(--gold);color:var(--bg-primary)}
+/* PUBLICACIONES (mejora 2) */
+#publicaciones{background:var(--bg-secondary);padding:100px 0}
+.pub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.pub-card{background:rgba(26,74,46,.07);border:1px solid rgba(200,149,42,.12);border-radius:12px;overflow:hidden;transition:border-color .3s,transform .3s}
+.pub-card:hover{border-color:rgba(200,149,42,.4);transform:translateY(-4px)}
+.pub-card-body{padding:24px}
+.pub-type{font-family:var(--ff-mono);font-size:9px;letter-spacing:.15em;color:var(--neon-green);text-transform:uppercase;margin-bottom:10px}
+.pub-title{font-family:var(--ff-serif);font-size:17px;font-weight:600;color:var(--white-mineral);line-height:1.4;margin-bottom:10px}
+.pub-desc{font-family:var(--ff-sans);font-size:12px;color:var(--gray-silver);line-height:1.6;margin-bottom:16px}
+.pub-meta{font-family:var(--ff-mono);font-size:10px;color:var(--gold);letter-spacing:.08em}
+.pub-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-mono);font-size:10px;color:var(--gold);border:1px solid rgba(200,149,42,.3);padding:6px 14px;margin-top:12px;transition:background .2s,color .2s}
+.pub-link:hover{background:var(--gold);color:var(--bg-primary)}
+/* TESTIMONIOS (mejora 3) */
+#testimonios{background:var(--bg-primary);padding:100px 0}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.test-card{background:rgba(26,74,46,.07);border:1px solid rgba(200,149,42,.12);border-radius:12px;padding:28px;transition:border-color .3s,transform .3s}
+.test-card:hover{border-color:rgba(200,149,42,.35);transform:translateY(-3px)}
+.test-quote-mark{font-family:var(--ff-serif);font-size:80px;color:var(--gold);opacity:.15;line-height:.6;margin-bottom:12px}
+.test-text{font-family:var(--ff-serif);font-size:15px;font-style:italic;color:var(--gray-silver);line-height:1.8;margin-bottom:20px}
+.test-author{display:flex;align-items:center;gap:14px;border-top:1px solid rgba(200,149,42,.12);padding-top:16px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:var(--green-emerald);border:1px solid rgba(200,149,42,.3);display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:18px;font-weight:700;color:var(--gold);flex-shrink:0}
+.test-name{font-family:var(--ff-sans);font-size:13px;font-weight:500;color:var(--white-mineral)}
+.test-role{font-family:var(--ff-mono);font-size:10px;color:var(--gold);letter-spacing:.08em}
+/* GALERIA (mejora 4) */
+#galeria{background:var(--bg-secondary);padding:100px 0}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.gallery-item{position:relative;overflow:hidden;border-radius:8px;cursor:pointer;aspect-ratio:4/3}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .3s}
+.gallery-item:hover img{transform:scale(1.08);filter:brightness(1.1)}
+.gallery-item::after{content:"🔍";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(0,0,0,.4);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+#lightbox{position:fixed;inset:0;z-index:99990;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:20px}
+#lightbox.open{display:flex}
+#lightbox-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px}
+#lightbox-close{position:absolute;top:20px;right:24px;font-size:28px;color:var(--gold);background:none;border:none;cursor:pointer}
+#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);font-size:28px;color:var(--gold);background:rgba(0,0,0,.5);border:1px solid rgba(200,149,42,.3);width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+#lightbox-prev{left:16px}#lightbox-next{right:16px}
+#lightbox-prev:hover,#lightbox-next:hover{background:var(--gold);color:var(--bg-primary)}
+#lightbox-caption{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--ff-mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-align:center}
+/* AGENDA (mejora 8) */
+#agenda{background:var(--bg-primary);padding:100px 0}
+.agenda-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+.agenda-sub{font-family:var(--ff-sans);font-size:16px;color:var(--gray-silver);max-width:500px;line-height:1.7;margin-bottom:36px}
+.btn-calendly{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--bg-primary);font-family:var(--ff-mono);font-size:13px;letter-spacing:.1em;padding:16px 36px;transition:background .3s,transform .2s}
+.btn-calendly:hover{background:var(--gold-light);transform:translateY(-2px)}
+/* BLOG (mejora 9) */
+#blog{background:var(--bg-secondary);padding:100px 0}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.blog-card{background:rgba(26,74,46,.07);border:1px solid rgba(200,149,42,.12);border-radius:12px;overflow:hidden;transition:border-color .3s,transform .3s}
+.blog-card:hover{border-color:rgba(200,149,42,.4);transform:translateY(-4px)}
+.blog-img{width:100%;height:180px;object-fit:cover;filter:grayscale(20%);transition:filter .3s}
+.blog-card:hover .blog-img{filter:grayscale(0%)}
+.blog-body{padding:24px}
+.blog-tag{font-family:var(--ff-mono);font-size:9px;letter-spacing:.15em;color:var(--neon-green);text-transform:uppercase;margin-bottom:10px}
+.blog-title{font-family:var(--ff-serif);font-size:18px;font-weight:600;color:var(--white-mineral);line-height:1.4;margin-bottom:10px}
+.blog-excerpt{font-family:var(--ff-sans);font-size:12px;color:var(--gray-silver);line-height:1.6;margin-bottom:16px}
+.blog-date{font-family:var(--ff-mono);font-size:10px;color:var(--gold);letter-spacing:.08em}
+.blog-read-more{display:inline-flex;align-items:center;gap:6px;font-family:var(--ff-mono);font-size:10px;color:var(--gold);margin-top:12px;transition:gap .2s}
+.blog-read-more:hover{gap:12px}
+/* POPUP EXIT (mejora 11) */
+#exit-popup{position:fixed;inset:0;z-index:99980;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center}
+#exit-popup.show{display:flex}
+.popup-box{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--bg-secondary);border:1px solid rgba(200,149,42,.4);border-radius:16px;padding:48px 40px;max-width:480px;width:90%;text-align:center}
+.popup-close{position:absolute;top:16px;right:20px;font-size:20px;color:var(--gray-silver);background:none;border:none;cursor:pointer}
+.popup-icon{font-size:48px;margin-bottom:16px}
+.popup-title{font-family:var(--ff-serif);font-size:26px;font-weight:700;color:var(--white-mineral);margin-bottom:10px}
+.popup-sub{font-family:var(--ff-sans);font-size:14px;color:var(--gray-silver);line-height:1.7;margin-bottom:28px}
+.popup-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-popup-primary{font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--bg-primary);border:none;padding:14px 28px;transition:background .2s;cursor:pointer}
+.btn-popup-primary:hover{background:var(--gold-light)}
+.btn-popup-secondary{font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,149,42,.4);background:transparent;padding:14px 28px;transition:background .2s,color .2s;cursor:pointer}
+/* THEME DOTS (mejora 5) */
+#theme-dots{position:fixed;bottom:20px;left:20px;z-index:9998;display:flex;gap:8px;align-items:center}
+.theme-dot{width:8px;height:8px;border-radius:50%;cursor:pointer;transition:opacity .3s,transform .3s;opacity:.35}
+.theme-dot.active{opacity:1;transform:scale(1.5)}
+/* SECTORES ajuste 3 cols */
+.sectores-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+/* RESPONSIVE ADDITIONS */
+@media(max-width:1024px){.impacto-grid,.tarifas-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.impacto-grid{grid-template-columns:repeat(2,1fr)}.tarifas-grid{grid-template-columns:1fr}.nav-controls{gap:6px}#visit-counter{display:none}.sectores-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ═══════════════════════════════════════════
    CURSOR
@@ -1156,6 +1288,12 @@ footer {
 <div id="cursor-outer" aria-hidden="true"></div>
 <div id="cursor-dot" aria-hidden="true"></div>
 
+<!-- VISIT COUNTER (mejora 1) -->
+<div id="visit-counter" aria-label="Visitas al sitio">
+  <div class="vc-num" id="vc-num">—</div>
+  <div class="vc-label">visitas</div>
+</div>
+
 <!-- NAV -->
 <nav id="main-nav" role="navigation" aria-label="Navegación principal">
   <div class="nav-brand">GLA <span style="color:rgba(200,149,42,0.4);margin:0 6px;">||</span> Ingeniero Ambiental</div>
@@ -1167,9 +1305,14 @@ footer {
     <li><a href="#organizaciones">Organizaciones</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-controls">
+    <button id="lang-toggle" title="Switch language">EN</button>
+    <button id="mode-toggle" title="Modo claro/oscuro">☀️</button>
+    <a href="img/CV_Gabriel_Lauya_Avelino.pdf" download class="btn-cv">⬇ CV</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1265,6 +1408,24 @@ footer {
     <div class="quote-banner reveal">
       <p class="quote-text">"El liderazgo ambiental no es un cargo — es una responsabilidad con el planeta y con las personas."</p>
       <p class="quote-author">— Gabriel Lauya Avelino</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTO EN NÚMEROS (mejora 4) -->
+<section id="impacto" aria-label="Impacto en números">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Impacto —</p>
+    <h2 class="section-headline reveal" style="text-align:center">NÚMEROS QUE HABLAN POR SÍ SOLOS</h2>
+    <div class="impacto-grid">
+      <div class="impacto-item reveal"><div class="impacto-num"><span class="count-up" data-target="190">0</span><span class="impacto-suffix">+</span></div><div class="impacto-label">Contratistas superados — #1 AAQ</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.08s"><div class="impacto-num"><span class="count-up" data-target="7">0</span></div><div class="impacto-label">Países de impacto</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.16s"><div class="impacto-num"><span class="count-up" data-target="12">0</span><span class="impacto-suffix">+</span></div><div class="impacto-label">Credenciales internacionales</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.24s"><div class="impacto-num"><span class="count-up" data-target="500">0</span><span class="impacto-suffix">+</span></div><div class="impacto-label">Jóvenes mentoreados</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.32s"><div class="impacto-num"><span class="count-up" data-target="35">0</span></div><div class="impacto-label">Conferencias dictadas</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.4s"><div class="impacto-num"><span class="count-up" data-target="5">0</span></div><div class="impacto-label">Proyectos mineros activos</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.48s"><div class="impacto-num"><span class="count-up" data-target="9">0</span></div><div class="impacto-label">Años de voluntariado</div></div>
+      <div class="impacto-item reveal" style="transition-delay:.56s"><div class="impacto-num"><span class="count-up" data-target="23833">0</span></div><div class="impacto-label">Seguidores LinkedIn</div></div>
     </div>
   </div>
 </section>
@@ -1479,6 +1640,122 @@ footer {
         </ul>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- TARIFAS (mejora 13) -->
+<section id="tarifas" aria-label="Paquetes y Tarifas">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Inversión —</p>
+    <h2 class="section-headline reveal" style="text-align:center">PAQUETES DE SERVICIO</h2>
+    <div class="tarifas-grid">
+      <div class="tarifa-card reveal">
+        <div class="tarifa-icon">🌱</div>
+        <div class="tarifa-name">Consultoría Puntual</div>
+        <div class="tarifa-price">Por hora · Proyecto específico</div>
+        <ul class="tarifa-items"><li>Revisión de documentos técnicos</li><li>Diagnóstico ambiental rápido</li><li>Asesoría en cumplimiento normativo</li><li>Entrega en 48-72 horas</li></ul>
+        <a href="#contacto" class="btn-tarifa">Solicitar cotización</a>
+      </div>
+      <div class="tarifa-card featured reveal" style="transition-delay:.1s">
+        <div class="tarifa-featured-badge">MÁS POPULAR</div>
+        <div class="tarifa-icon">🏔</div>
+        <div class="tarifa-name">Consultoría Integral</div>
+        <div class="tarifa-price">Mensual · Proyecto largo plazo</div>
+        <ul class="tarifa-items"><li>Gestión ambiental completa ISO 14001</li><li>Auditorías y cumplimiento normativo</li><li>Capacitaciones SSOMA al equipo</li><li>Monitoreo ambiental y reportes</li><li>Soporte continuo prioritario</li></ul>
+        <a href="#contacto" class="btn-tarifa">Hablar con Gabriel</a>
+      </div>
+      <div class="tarifa-card reveal" style="transition-delay:.2s">
+        <div class="tarifa-icon">🎓</div>
+        <div class="tarifa-name">Mentoría y Capacitación</div>
+        <div class="tarifa-price">Por sesión · Programa personalizado</div>
+        <ul class="tarifa-items"><li>Mentoría 1:1 para ingenieros</li><li>Talleres grupales SSOMA</li><li>Orientación en becas internacionales</li><li>Coaching de marca personal</li></ul>
+        <a href="https://wa.me/51918978660" class="btn-tarifa">Agendar sesión</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;font-family:var(--ff-mono);font-size:11px;color:var(--gray-silver);letter-spacing:.08em">* Tarifas coordinadas directamente. Contáctame para una propuesta personalizada sin compromiso.</p>
+  </div>
+</section>
+
+<!-- PUBLICACIONES (mejora 2) -->
+<section id="publicaciones" aria-label="Publicaciones y Medios">
+  <div class="container">
+    <p class="section-label reveal">— Publicaciones y Medios —</p>
+    <h2 class="section-headline reveal">VOZ CON AUTORIDAD TÉCNICA</h2>
+    <div class="pub-grid">
+      <div class="pub-card reveal"><div class="pub-card-body"><div class="pub-type">📚 Libro publicado</div><div class="pub-title">"Las Montañas, Nuestro Futuro"</div><div class="pub-desc">Publicación sobre ecosistemas de alta montaña, cambio climático y gestión ambiental sostenible en los Andes peruanos.</div><div class="pub-meta">ISBN 978-987-48458-2-5 · 2023</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.1s"><div class="pub-card-body"><div class="pub-type">🎤 Conferencista</div><div class="pub-title">PERUMIN 35, 36 y 37 · EXPOMINA 2024</div><div class="pub-desc">Conferencista y panelista en los eventos de minería y sostenibilidad más importantes de Latinoamérica y el mundo.</div><div class="pub-meta">2022 · 2023 · 2024 · 2025</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.2s"><div class="pub-card-body"><div class="pub-type">🌍 Ponencia internacional</div><div class="pub-title">Congreso Americano de Microbiología · Argentina 2024</div><div class="pub-desc">Ponente sobre aplicaciones ambientales y biotecnología en gestión de ecosistemas mineros.</div><div class="pub-meta">Buenos Aires · 2024</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.3s"><div class="pub-card-body"><div class="pub-type">📺 Panel técnico</div><div class="pub-title">TIMDS 2026 · Innovación SSOMA</div><div class="pub-desc">Panelista sobre innovación digital en seguridad, salud ocupacional y medio ambiente en proyectos mineros de clase mundial.</div><div class="pub-meta">2026</div></div></div>
+      <div class="pub-card reveal" style="transition-delay:.4s"><div class="pub-card-body"><div class="pub-type">💼 LinkedIn · Contenido técnico</div><div class="pub-title">Artículos sobre gestión ambiental y liderazgo</div><div class="pub-desc">Más de 23,000 seguidores consumiendo contenido técnico de valor sobre ingeniería ambiental, SSOMA e innovación.</div><div class="pub-meta">23,833 seguidores · LinkedIn</div><a href="https://www.linkedin.com/in/gabriellauya/" target="_blank" class="pub-link">Ver perfil →</a></div></div>
+      <div class="pub-card reveal" style="transition-delay:.5s"><div class="pub-card-body"><div class="pub-type">🏆 Reconocimiento</div><div class="pub-title">PERUMIN Jóvenes 2025 · Joven Líder</div><div class="pub-desc">Reconocido como Joven Líder en el evento de minería más importante del Perú ante miles de asistentes.</div><div class="pub-meta">PERUMIN 37 · Arequipa · 2025</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS (mejora 3) -->
+<section id="testimonios" aria-label="Testimonios">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Testimonios —</p>
+    <h2 class="section-headline reveal" style="text-align:center">LO QUE DICEN QUIENES ME CONOCEN</h2>
+    <div class="test-grid">
+      <div class="test-card reveal"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel es un profesional excepcional con una visión única para integrar innovación tecnológica en gestión ambiental. Su liderazgo en Quellaveco fue determinante para posicionarnos como #1 entre todos los contratistas."</p><div class="test-author"><div class="test-avatar">F</div><div><div class="test-name">Freddy Amarante</div><div class="test-role">Project Manager · COSAPI / AAQ TC06</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.1s"><div class="test-quote-mark">"</div><p class="test-text">"La capacidad de Gabriel para diseñar materiales técnicos accesibles a equipos de campo es notable. En NEXA implementó estándares de biodiversidad de manera impecable."</p><div class="test-author"><div class="test-avatar">G</div><div><div class="test-name">Guillermo Chanduvi</div><div class="test-role">SSOMA Manager · COSAPI / AAQ TC06</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.2s"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel tiene un don para mentorear. Me orientó en mi postulación a PRONABEC y logré obtenerla. Su ejemplo como primer profesional de su comunidad es una inspiración para toda nuestra generación."</p><div class="test-author"><div class="test-avatar">A</div><div><div class="test-name">Alexandra Carrillo Q.</div><div class="test-role">Ingeniera Ambiental · Mentee IIMP</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.3s"><div class="test-quote-mark">"</div><p class="test-text">"El Botón de Reportabilidad que Gabriel desarrolló transformó nuestra cultura de reporte en campo. Una solución innovadora que ningún otro contratista había logrado implementar."</p><div class="test-author"><div class="test-avatar">C</div><div><div class="test-name">Carlos Muñoz</div><div class="test-role">Construction Manager · COSAPI / AAQ TC06</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.4s"><div class="test-quote-mark">"</div><p class="test-text">"Gabriel representa el nuevo perfil de ingeniero ambiental que el sector minero peruano necesita: técnico, innovador, líder y con profundo compromiso social."</p><div class="test-author"><div class="test-avatar">I</div><div><div class="test-name">Instituto de Ingenieros de Minas</div><div class="test-role">IIMP Perú · Programa Mentoring</div></div></div></div>
+      <div class="test-card reveal" style="transition-delay:.5s"><div class="test-quote-mark">"</div><p class="test-text">"Participar en el programa BRIMM de UBC junto a Gabriel confirmó lo que ya sabíamos: es un profesional de calibre internacional. Su análisis en la negociación de Mina 2 fue brillante."</p><div class="test-author"><div class="test-avatar">U</div><div><div class="test-name">Colega BRIMM 2026</div><div class="test-role">University of British Columbia · Canadá</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA (mejora 4) -->
+<section id="galeria" aria-label="Galería de Momentos">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Galería —</p>
+    <h2 class="section-headline reveal" style="text-align:center">MOMENTOS QUE DEFINEN UNA CARRERA</h2>
+    <div class="gallery-grid reveal" id="gallery-grid">
+      <div class="gallery-item" data-idx="0"><img src="img/cred-ubc.jpg" alt="UBC BRIMM 2026 — Vancouver"></div>
+      <div class="gallery-item" data-idx="1"><img src="img/cred-harvard.jpg" alt="Harvard Aspire Leader 2024"></div>
+      <div class="gallery-item" data-idx="2"><img src="img/cred-perumin.jpg" alt="PERUMIN 37 — Joven Líder 2025"></div>
+      <div class="gallery-item" data-idx="3"><img src="img/Innovador.jpg" alt="COSAPIENS — Red de Innovadores"></div>
+      <div class="gallery-item" data-idx="4"><img src="img/icam.jpg" alt="Facilitador ICAM — COSAPI/AAQ"></div>
+      <div class="gallery-item" data-idx="5"><img src="img/ReconocimientoAAQ.jpg" alt="Reconocimiento Anglo American Quellaveco"></div>
+      <div class="gallery-item" data-idx="6"><img src="img/org-iimp.jpg" alt="Instituto de Ingenieros de Minas del Perú"></div>
+      <div class="gallery-item" data-idx="7"><img src="img/vol-amautas.jpg" alt="Amautas Mineros — Mentoría"></div>
+      <div class="gallery-item" data-idx="8"><img src="img/heros.jpg" alt="Gabriel Lauya Avelino — Ingeniero Ambiental"></div>
+    </div>
+  </div>
+</section>
+<div id="lightbox" role="dialog">
+  <button id="lightbox-close">✕</button>
+  <button id="lightbox-prev">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next">›</button>
+  <div id="lightbox-caption"></div>
+</div>
+
+<!-- BLOG (mejora 9) -->
+<section id="blog" aria-label="Blog Técnico">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">— Blog Técnico —</p>
+    <h2 class="section-headline reveal" style="text-align:center">CONOCIMIENTO QUE TRANSFORMA</h2>
+    <div class="blog-grid">
+      <div class="blog-card reveal"><img class="blog-img" src="img/cred-ubc.jpg" alt="ISO 14001:2026"><div class="blog-body"><div class="blog-tag">🌿 Gestión Ambiental</div><h3 class="blog-title">ISO 14001:2026: Qué cambia y cómo preparar a tu empresa</h3><p class="blog-excerpt">La nueva versión trae cambios en gestión del riesgo, economía circular y digitalización. Los puntos clave que debes conocer como supervisor ambiental.</p><div class="blog-date">Junio 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal" style="transition-delay:.1s"><img class="blog-img" src="img/Innovador.jpg" alt="PWA SSOMA"><div class="blog-body"><div class="blog-tag">💡 Innovación SSOMA</div><h3 class="blog-title">Cómo creé una PWA de reportabilidad SSOMA sin presupuesto</h3><p class="blog-excerpt">El Botón de Reportabilidad que cambió la cultura de reporte en campo de COSAPI/AAQ. Paso a paso con herramientas gratuitas.</p><div class="blog-date">Mayo 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal" style="transition-delay:.2s"><img class="blog-img" src="img/cred-harvard.jpg" alt="Becas internacionales"><div class="blog-body"><div class="blog-tag">🎓 Liderazgo y Becas</div><h3 class="blog-title">De PRONABEC a Harvard: La ruta de las becas internacionales</h3><p class="blog-excerpt">Mi experiencia postulando a Harvard Aspire Leader, UBC BRIMM y British Council. Estrategia, documentos y lecciones aprendidas.</p><div class="blog-date">Abril 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA (mejora 8) -->
+<section id="agenda" aria-label="Agendar reunión">
+  <div class="container">
+    <div class="agenda-inner">
+      <p class="section-label reveal">— Agenda —</p>
+      <h2 class="section-headline reveal">¿HABLAMOS?</h2>
+      <p class="agenda-sub reveal">Agenda una llamada de 30 minutos sin compromiso. Conversemos sobre tu proyecto, consultoría, capacitación o simplemente para conocernos.</p>
+      <a href="https://wa.me/51918978660?text=Hola%20Gabriel%2C%20quisiera%20agendar%20una%20llamada%20contigo." target="_blank" class="btn-calendly reveal">📅 Agendar llamada por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -2024,6 +2301,28 @@ footer {
 </footer>
 
 <!-- CHAT FLOTANTE -->
+<!-- POPUP EXIT (mejora 11) -->
+<div id="exit-popup" role="dialog">
+  <div class="popup-box">
+    <button class="popup-close" id="popup-close">✕</button>
+    <div class="popup-icon">🌿</div>
+    <h3 class="popup-title">¡Antes de irte!</h3>
+    <p class="popup-sub">¿Tienes un proyecto ambiental o necesitas consultoría? Hablemos. Una llamada de 30 minutos puede marcar la diferencia.</p>
+    <div class="popup-actions">
+      <a href="https://wa.me/51918978660" target="_blank" class="btn-popup-primary">Sí, quiero hablar</a>
+      <button class="btn-popup-secondary" id="popup-dismiss">Ahora no</button>
+    </div>
+  </div>
+</div>
+
+<!-- TEMA DOTS (mejora 5) -->
+<div id="theme-dots" role="group" aria-label="Cambiar tema de color">
+  <div class="theme-dot active" style="background:#C8952A" data-theme-idx="0" title="Verde"></div>
+  <div class="theme-dot" style="background:#B87333" data-theme-idx="1" title="Azul"></div>
+  <div class="theme-dot" style="background:#A8A8A8" data-theme-idx="2" title="Gris"></div>
+  <div class="theme-dot" style="background:#D4AF37" data-theme-idx="3" title="Vino"></div>
+</div>
+
 <button id="chat-fab" onclick="toggleChat()" aria-label="Abrir asistente virtual" aria-expanded="false">💬</button>
 <div id="chat-window" role="dialog" aria-label="Asistente Virtual de Gabriel Lauya" aria-hidden="true">
   <div class="chat-header">
@@ -2359,8 +2658,98 @@ document.getElementById('email-copy').addEventListener('click', function(e) {
   });
 });
 
-// ═══════════════════════════════════════
-// prefers-reduced-motion
+// ── VISIT COUNTER (mejora 1) ──
+(function(){
+  const k='gla_visits';let v=parseInt(localStorage.getItem(k)||'0')+1;
+  localStorage.setItem(k,v);
+  const el=document.getElementById('vc-num');
+  if(!el)return;
+  let s=null;
+  function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/1000,1);el.textContent=Math.floor(p*v).toLocaleString();if(p<1)requestAnimationFrame(step);else el.textContent=v.toLocaleString()}
+  requestAnimationFrame(step);
+})();
+
+// ── COUNTER ANIMADO (mejora 4) ──
+const countObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&!e.target.dataset.counted){
+      e.target.dataset.counted='1';
+      const t=parseInt(e.target.dataset.target||'0');
+      let s=null;
+      function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/2000,1);const ease=1-Math.pow(1-p,3);e.target.textContent=Math.floor(ease*t).toLocaleString();if(p<1)requestAnimationFrame(step);else e.target.textContent=t.toLocaleString()}
+      requestAnimationFrame(step);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.count-up').forEach(el=>countObs.observe(el));
+
+// ── MODO CLARO/OSCURO (mejora 6) ──
+const modeBtn=document.getElementById('mode-toggle');
+let lightMode=false;
+if(modeBtn)modeBtn.addEventListener('click',()=>{lightMode=!lightMode;document.body.setAttribute('data-mode',lightMode?'light':'');modeBtn.textContent=lightMode?'🌙':'☀️'});
+
+// ── MULTIIDIOMA (mejora 10) ──
+let currentLang='es';
+const langBtn=document.getElementById('lang-toggle');
+if(langBtn)langBtn.addEventListener('click',function(){
+  currentLang=currentLang==='es'?'en':'es';
+  this.textContent=currentLang==='es'?'EN':'ES';
+  document.querySelectorAll('[data-es]').forEach(el=>{const txt=el.getAttribute('data-'+currentLang);if(txt)el.innerHTML=txt});
+});
+
+// ── TEMAS DE COLOR (mejora 1+5) ──
+let currentTheme=0;
+const themes=['0','1','2','3'];
+const dots=document.querySelectorAll('.theme-dot');
+dots.forEach(d=>{d.addEventListener('click',()=>{currentTheme=parseInt(d.dataset.themeIdx);applyTheme()})});
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme',themes[currentTheme]);
+  document.body.setAttribute('data-theme',themes[currentTheme]);
+  dots.forEach((d,i)=>d.classList.toggle('active',i===currentTheme));
+}
+setInterval(()=>{currentTheme=(currentTheme+1)%4;applyTheme()},60000);
+
+// ── LIGHTBOX (mejora 4) ──
+(function(){
+  const items=document.querySelectorAll('.gallery-item');
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lightbox-img');
+  const lbCap=document.getElementById('lightbox-caption');
+  if(!lb)return;
+  let idx=0;
+  const imgs=Array.from(items).map(i=>({src:i.querySelector('img').src,alt:i.querySelector('img').alt}));
+  function open(i){idx=i;lbImg.src=imgs[i].src;lbImg.alt=imgs[i].alt;if(lbCap)lbCap.textContent=imgs[i].alt;lb.classList.add('open')}
+  function close(){lb.classList.remove('open')}
+  items.forEach((item,i)=>item.addEventListener('click',()=>open(i)));
+  const cl=document.getElementById('lightbox-close');if(cl)cl.addEventListener('click',close);
+  const pr=document.getElementById('lightbox-prev');if(pr)pr.addEventListener('click',()=>open((idx-1+imgs.length)%imgs.length));
+  const nx=document.getElementById('lightbox-next');if(nx)nx.addEventListener('click',()=>open((idx+1)%imgs.length));
+  lb.addEventListener('click',e=>{if(e.target===lb)close()});
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft'&&pr)pr.click();if(e.key==='ArrowRight'&&nx)nx.click()});
+})();
+
+// ── POPUP EXIT (mejora 11) ──
+(function(){
+  const popup=document.getElementById('exit-popup');
+  if(!popup)return;
+  let shown=false;
+  setTimeout(()=>{if(!shown){shown=true;popup.classList.add('show')}},45000);
+  document.addEventListener('mouseleave',e=>{if(e.clientY<10&&!shown){shown=true;popup.classList.add('show')}});
+  const pc=document.getElementById('popup-close');if(pc)pc.addEventListener('click',()=>popup.classList.remove('show'));
+  const pd=document.getElementById('popup-dismiss');if(pd)pd.addEventListener('click',()=>popup.classList.remove('show'));
+  popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('show')});
+})();
+
+// ── SLIDESHOW (mejora 2) ──
+(function(){
+  const sets={'hero':['img/heros.jpg'],'cred-ubc':['img/cred-ubc.jpg'],'cred-cosapi1':['img/Innovador.jpg'],'cred-cosapi2':['img/icam.jpg'],'cred-perumin':['img/cred-perumin.jpg'],'cred-harvard':['img/cred-harvard.jpg'],'cred-aaq':['img/ReconocimientoAAQ.jpg'],'vol-amautas':['img/vol-amautas.jpg'],'vol-iimp':['img/org-iimp.jpg'],'org-iimp':['img/org-iimp.jpg']};
+  const idx={};Object.keys(sets).forEach(k=>idx[k]=0);
+  const style=document.createElement('style');style.textContent='[data-slide]{transition:opacity .5s ease}';document.head.appendChild(style);
+  function rotate(){document.querySelectorAll('[data-slide]').forEach(img=>{const id=img.dataset.slide,set=sets[id];if(!set||set.length<2)return;idx[id]=(idx[id]+1)%set.length;img.style.opacity='0';setTimeout(()=>{img.src=set[idx[id]];img.style.opacity='1'},500)})}
+  setInterval(rotate,30000);
+})();
+
+// ── prefers-reduced-motion
 // ═══════════════════════════════════════
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('[style*="animation"]').forEach(el => el.style.animation = 'none');
