@@ -2020,12 +2020,12 @@ footer {
 <!-- BLOG (mejora 9) -->
 <section id="blog" aria-label="Blog Técnico">
   <div class="container">
-    <p class="section-label reveal" style="text-align:center">— Blog Técnico —</p>
+    <p class="section-label reveal" style="text-align:center">— CONFERENCIAS, EVENTOS NACIONALES E INTERNACIONALES —</p>
     <h2 class="section-headline reveal" style="text-align:center">CONOCIMIENTO QUE TRANSFORMA</h2>
     <div class="blog-grid">
-      <div class="blog-card reveal"><img class="blog-img" src="img/cred-ubc.jpg" alt="ISO 14001:2026"><div class="blog-body"><div class="blog-tag">🌿 Gestión Ambiental</div><h3 class="blog-title">ISO 14001:2026: Qué cambia y cómo preparar a tu empresa</h3><p class="blog-excerpt">La nueva versión trae cambios en gestión del riesgo, economía circular y digitalización. Los puntos clave que debes conocer como supervisor ambiental.</p><div class="blog-date">Junio 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
-      <div class="blog-card reveal" style="transition-delay:.1s"><img class="blog-img" src="img/Innovador.jpg" alt="PWA SSOMA"><div class="blog-body"><div class="blog-tag">💡 Innovación SSOMA</div><h3 class="blog-title">Cómo creé una PWA de reportabilidad SSOMA sin presupuesto</h3><p class="blog-excerpt">El Botón de Reportabilidad que cambió la cultura de reporte en campo de COSAPI/AAQ. Paso a paso con herramientas gratuitas.</p><div class="blog-date">Mayo 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
-      <div class="blog-card reveal" style="transition-delay:.2s"><img class="blog-img" src="img/cred-harvard.jpg" alt="Becas internacionales"><div class="blog-body"><div class="blog-tag">🎓 Liderazgo y Becas</div><h3 class="blog-title">De PRONABEC a Harvard: La ruta de las becas internacionales</h3><p class="blog-excerpt">Mi experiencia postulando a Harvard Aspire Leader, UBC BRIMM y British Council. Estrategia, documentos y lecciones aprendidas.</p><div class="blog-date">Abril 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal"><img class="blog-img" src="img/IIPM.jpg" alt="CONVENCIONISTA "><div class="blog-body"><div class="blog-tag">🌿 PERUMIN 37 </div><h3 class="blog-title">CONVENCIONISTA EN UNO DE LOS EVENTOS DEL SECTOR MINERO MÁS GRANDE DE LATAM</h3><p class="blog-excerpt">La nueva versión trae cambios en gestión del riesgo, economía circular y digitalización. Los puntos clave que debes conocer como supervisor ambiental.</p><div class="blog-date">Junio 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal" style="transition-delay:.1s"><img class="blog-img" src="img/paneloma1.jpg" alt="PWA SSOMA"><div class="blog-body"><div class="blog-tag">💡 Innovación SSOMA</div><h3 class="blog-title">Cómo creé una PWA de reportabilidad SSOMA sin presupuesto</h3><p class="blog-excerpt">El Botón de Reportabilidad que cambió la cultura de reporte en campo de COSAPI/AAQ. Paso a paso con herramientas gratuitas.</p><div class="blog-date">Mayo 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
+      <div class="blog-card reveal" style="transition-delay:.2s"><img class="blog-img" src="img/Coach.jpg" alt="Becas internacionales"><div class="blog-body"><div class="blog-tag">🎓 Liderazgo y Becas</div><h3 class="blog-title">De PRONABEC a Harvard: La ruta de las becas internacionales</h3><p class="blog-excerpt">Mi experiencia postulando a Harvard Aspire Leader, UBC BRIMM y British Council. Estrategia, documentos y lecciones aprendidas.</p><div class="blog-date">Abril 2026</div><a href="#" class="blog-read-more">Leer artículo →</a></div></div>
     </div>
   </div>
 </section>
@@ -2673,7 +2673,7 @@ window.addEventListener('scroll',()=>{if(backTop)backTop.style.display=window.sc
   const idx={};Object.keys(sets).forEach(k=>idx[k]=0);
   const style=document.createElement('style');style.textContent='[data-slide]{transition:opacity .5s ease}';document.head.appendChild(style);
   function rotate(){document.querySelectorAll('[data-slide]').forEach(img=>{const id=img.dataset.slide,set=sets[id];if(!set||set.length<2)return;idx[id]=(idx[id]+1)%set.length;img.style.opacity='0';setTimeout(()=>{img.src=set[idx[id]];img.style.opacity='1'},500)})}
-  setInterval(rotate,30000);
+  setInterval(rotate,50000);
 })();
 
 // ── prefers-reduced-motion
@@ -2720,7 +2720,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   // AGREGA AQUÍ TODAS TUS FOTOS POR SECCIÓN
   // Formato: 'id-slide': ['foto1.jpg','foto2.jpg',...]
   const sets = {
-    'hero':         ['img/heros.jpg'],
+    'hero':         ['img/heros.jpg', 'img/heros1.jpg' ],
     'cred-ubc':     ['img/cred-ubc.jpg'],
     'cred-cosapi1': ['img/Innovador.jpg'],
     'cred-cosapi2': ['img/icam.jpg'],
@@ -2729,6 +2729,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     'vol-amautas':  ['img/vol-amautas.jpg'],
     'vol-iimp':     ['img/vol-amautas.jpg'],
     'org-iimp':     ['img/org-iimp.jpg'],
+    'desco':     ['img/desco.jpg', 'img/desco1.jpg', 'img/desco3.jpg'],
   };
   const idx = {};
   Object.keys(sets).forEach(k => idx[k] = 0);
