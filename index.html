@@ -1367,7 +1367,7 @@ footer {
       <div class="hero-badges">
         <span class="badge">UBC · BRIMM Fellow</span>
         <span class="badge">Harvard Aspire Leader</span>
-        <span class="badge">#Innovador COSAPIENS · 24K+ Seguidores en LinkedIn</span>
+        <span class="badge"> Hombre Roca OMA · 24K+ LinkedIn</span>
       </div>
       <a href="#perfil" class="hero-cta" style="margin-top:28px;">Explorar mi trabajo ↓</a>
       <div class="hero-socials">
@@ -2666,15 +2666,6 @@ setInterval(()=>{currentTheme=(currentTheme+1)%4;applyTheme()},60000);
 // ── BACK TO TOP ──
 const backTop=document.getElementById('back-top');
 window.addEventListener('scroll',()=>{if(backTop)backTop.style.display=window.scrollY>600?'flex':'none';},{passive:true});
-
-// ── SLIDESHOW (mejora 2) ──
-(function(){
-  const sets={'hero':['img/heros.jpg'],'cred-ubc':['img/cred-ubc.jpg'],'cred-cosapi1':['img/Innovador.jpg'],'cred-cosapi2':['img/icam.jpg'],'cred-perumin':['img/cred-perumin.jpg'],'cred-harvard':['img/cred-harvard.jpg'],'cred-aaq':['img/ReconocimientoAAQ.jpg'],'vol-amautas':['img/vol-amautas.jpg'],'vol-iimp':['img/org-iimp.jpg'],'org-iimp':['img/org-iimp.jpg']};
-  const idx={};Object.keys(sets).forEach(k=>idx[k]=0);
-  const style=document.createElement('style');style.textContent='[data-slide]{transition:opacity .5s ease}';document.head.appendChild(style);
-  function rotate(){document.querySelectorAll('[data-slide]').forEach(img=>{const id=img.dataset.slide,set=sets[id];if(!set||set.length<2)return;idx[id]=(idx[id]+1)%set.length;img.style.opacity='0';setTimeout(()=>{img.src=set[idx[id]];img.style.opacity='1'},500)})}
-  setInterval(rotate,50000);
-})();
 
 // ── prefers-reduced-motion
 // ═══════════════════════════════════════
