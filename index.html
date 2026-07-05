@@ -138,6 +138,17 @@ body.light-mode .chat-msg.bot{background:rgba(212,232,218,.5) !important}
 .pub-link:hover{background:var(--gold);color:var(--bg-primary)}
 /* TESTIMONIOS (mejora 3) */
 #testimonios{background:var(--bg-primary);padding:100px 0}
+/* EMPRESAS — cinta dinámica */
+.marquee-wrap{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;align-items:center;gap:64px;width:max-content;animation:marqueeScroll 32s linear infinite;will-change:transform}
+.marquee-wrap:hover .marquee-track{animation-play-state:paused}
+.marquee-item{display:flex;align-items:center;gap:14px;white-space:nowrap;opacity:.75;transition:opacity .25s}
+.marquee-item:hover{opacity:1}
+.logo-mono{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 6px;border:1px solid rgba(200,149,42,.45);border-radius:50%;font-family:var(--ff-mono);font-size:12px;letter-spacing:.06em;color:var(--gold);background:rgba(200,149,42,.06)}
+.logo-mono img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.marquee-name{font-family:var(--ff-serif);font-size:17px;font-weight:600;letter-spacing:.06em;color:var(--white-mineral)}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
 .test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
 .test-card{background:rgba(26,74,46,.07);border:1px solid rgba(200,149,42,.12);border-radius:12px;padding:28px;transition:border-color .3s,transform .3s}
 .test-card:hover{border-color:rgba(200,149,42,.35);transform:translateY(-3px)}
@@ -356,22 +367,35 @@ nav.scrolled {
   animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 .hero-name-1 {
-  font-family: var(--ff-script);
-  font-size: clamp(52px, 7vw, 100px);
-  color: var(--white-mineral);
-  line-height: 1;
+  font-family: var(--ff-serif);
+  font-weight: 700;
+  font-size: clamp(44px, 6vw, 86px);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  line-height: 1.05;
   white-space: nowrap;
   opacity: 0;
   animation: fadeInUp 0.7s ease-out 0.9s forwards;
+  background: linear-gradient(110deg, var(--white-mineral) 30%, var(--gold) 50%, var(--white-mineral) 70%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--white-mineral);
 }
 .hero-name-2 {
-  font-family: var(--ff-script);
-  font-size: clamp(36px, 5vw, 68px);
-  color: var(--white-mineral);
-  line-height: 1.05;
+  font-family: var(--ff-serif);
+  font-weight: 600;
+  font-size: clamp(28px, 3.6vw, 52px);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--gold);
   opacity: 0;
   animation: fadeInUp 0.6s ease-out 1.3s forwards;
 }
+.hero-name-1.shimmer-on { animation: fadeInUp 0.7s ease-out 0.9s forwards, goldShimmer 5s linear 2s infinite; }
+@keyframes goldShimmer { 0%{background-position:220% center} 100%{background-position:-220% center} }
 .hero-divider {
   width: 0; height: 1px; background: var(--gold);
   margin: 20px 0;
@@ -1336,6 +1360,7 @@ footer {
     <li><a href="#voluntariado">Voluntariado</a></li>
     <li><a href="#organizaciones">Organizaciones</a></li>
     <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#testimonios" data-es="Recomendar" data-en="Recommend" style="color:var(--gold)">Recomendar</a></li>
   </ul>
   <div class="nav-controls">
     <button id="lang-toggle" title="Switch language">EN</button>
@@ -1360,7 +1385,7 @@ footer {
     <!-- COLUMNA DE TEXTO -->
     <div class="hero-text-col">
       <p class="hero-label">¡Hola! Soy</p>
-      <h1 class="hero-name-1" aria-label="Gabriel Lauya Avelino"> Gabriel Lauya </h1>
+      <h1 class="hero-name-1 shimmer-on" aria-label="Gabriel Lauya Avelino">Gabriel Lauya</h1>
       <h1 class="hero-name-2">Avelino</h1>
       <div class="hero-divider" aria-hidden="true"></div>
       <p class="hero-cargo">Ingeniero Ambiental CIP -  MINERÍA · Líder en Innovación · Entrenador SHE </p>
@@ -1965,13 +1990,29 @@ footer {
         <div><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Tu nombre completo" data-en="Your full name">Tu nombre completo</label><input id="test-name" type="text" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none" placeholder="Nombre Apellido"></div>
         <div><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Cargo / Empresa" data-en="Position / Company">Cargo / Empresa</label><input id="test-role" type="text" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none" placeholder="Gerente / COSAPI S.A."></div>
       </div>
-      <div style="margin-bottom:20px"><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Tu testimonio" data-en="Your testimonial">Tu testimonio</label><textarea id="test-body" rows="4" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none;resize:vertical" data-es="Comparte tu experiencia trabajando con Gabriel..." data-en="Share your experience working with Gabriel...">Comparte tu experiencia trabajando con Gabriel...</textarea></div>
+      <div style="margin-bottom:20px"><label style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.1em;color:var(--gray-silver);text-transform:uppercase;display:block;margin-bottom:6px" data-es="Tu testimonio" data-en="Your testimonial">Tu testimonio</label><textarea id="test-body" rows="4" style="width:100%;background:rgba(26,74,46,.1);border:1px solid rgba(200,149,42,.2);border-radius:4px;padding:10px 14px;color:var(--white-mineral);font-family:var(--ff-sans);font-size:13px;outline:none;resize:vertical" placeholder="Comparte tu experiencia trabajando con Gabriel..." data-es-placeholder="Comparte tu experiencia trabajando con Gabriel..." data-en-placeholder="Share your experience working with Gabriel..."></textarea></div>
       <button onclick="submitTestimonio()" style="font-family:var(--ff-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bg-primary);background:var(--gold);border:none;padding:14px 32px;cursor:pointer;transition:background .2s" data-es="Enviar testimonio →" data-en="Submit testimonial →">Enviar testimonio →</button>
       <p id="test-msg" style="font-family:var(--ff-mono);font-size:11px;color:var(--neon-green);margin-top:12px;display:none"></p>
     </div>
   </div>
 </section>
 
+<!-- EMPRESAS QUE CONFÍAN EN MÍ -->
+<section id="empresas" aria-label="Empresas que confían en mí" style="padding:70px 0;background:var(--bg-primary);border-top:1px solid rgba(200,149,42,.12);border-bottom:1px solid rgba(200,149,42,.12);overflow:hidden">
+  <p class="section-label reveal" style="text-align:center" data-es="— Empresas que confían en mí —" data-en="— Companies that trust me —">— Empresas que confían en mí —</p>
+  <div class="marquee-wrap" style="margin-top:36px">
+    <div class="marquee-track" id="marquee-track">
+      <div class="marquee-item"><span class="logo-mono">AA</span><span class="marquee-name">Anglo American · Quellaveco</span></div>
+      <div class="marquee-item"><span class="logo-mono">CO</span><span class="marquee-name">COSAPI S.A.</span></div>
+      <div class="marquee-item"><span class="logo-mono">AN</span><span class="marquee-name">Antamina</span></div>
+      <div class="marquee-item"><span class="logo-mono">CH</span><span class="marquee-name">Chinalco · Toromocho</span></div>
+      <div class="marquee-item"><span class="logo-mono">NX</span><span class="marquee-name">Nexa Resources · Cerro Lindo</span></div>
+      <div class="marquee-item"><span class="logo-mono">II</span><span class="marquee-name">IIMP Perú</span></div>
+      <div class="marquee-item"><span class="logo-mono">UBC</span><span class="marquee-name">UBC · BRIMM</span></div>
+      <div class="marquee-item"><span class="logo-mono">HA</span><span class="marquee-name">Harvard · Aspire Leaders</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- PUBLICACIONES -->
 <!-- PUBLICACIONES (mejora 2) -->
@@ -2538,23 +2579,94 @@ function sendQuick(key) {
 // ═══════════════════════════════════════
 // FORM MAILTO
 // ═══════════════════════════════════════
-function sendForm(e) {
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/gabriellauyaa@gmail.com';
+
+async function sendForm(e) {
   e.preventDefault();
   const f = e.target;
-  const subject = `Solicitud de servicio: ${f.servicio.value || 'Consulta'} — ${f.nombre.value}`;
-  const body = `Nombre: ${f.nombre.value}
-Empresa: ${f.empresa.value}
-Cargo: ${f.cargo.value}
-Email: ${f.email.value}
-Teléfono: ${f.telefono.value}
-País/Ciudad: ${f.pais.value}
-Servicio: ${f.servicio.value}
-Presupuesto: ${f.presupuesto.value}
-
-Descripción:
-${f.descripcion.value}`;
-  window.location.href = `mailto:lauya.ambiental.30@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const btn = f.querySelector('.btn-submit');
+  const orig = btn.textContent;
+  btn.textContent = 'ENVIANDO...'; btn.disabled = true;
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: `Solicitud de servicio: ${f.servicio.value || 'Consulta'} — ${f.nombre.value}`,
+        _template: 'table',
+        Tipo: 'SOLICITUD DE PROPUESTA',
+        Nombre: f.nombre.value,
+        Empresa: f.empresa.value,
+        Cargo: f.cargo.value,
+        Email: f.email.value,
+        Telefono: f.telefono.value,
+        Pais_Ciudad: f.pais.value,
+        Servicio: f.servicio.value,
+        Presupuesto: f.presupuesto.value,
+        Descripcion: f.descripcion.value
+      })
+    });
+    if (!res.ok) throw new Error('fail');
+    btn.textContent = '✓ SOLICITUD ENVIADA';
+    f.reset();
+    setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 4000);
+  } catch (err) {
+    btn.textContent = orig; btn.disabled = false;
+    // Respaldo: abrir cliente de correo
+    const body = `Nombre: ${f.nombre.value}\nEmpresa: ${f.empresa.value}\nCargo: ${f.cargo.value}\nEmail: ${f.email.value}\nTeléfono: ${f.telefono.value}\nPaís/Ciudad: ${f.pais.value}\nServicio: ${f.servicio.value}\nPresupuesto: ${f.presupuesto.value}\n\nDescripción:\n${f.descripcion.value}`;
+    window.location.href = `mailto:gabriellauyaa@gmail.com?subject=${encodeURIComponent('Solicitud de servicio — ' + f.nombre.value)}&body=${encodeURIComponent(body)}`;
+  }
 }
+
+// ═══════════════════════════════════════
+// ENVIAR TESTIMONIO → gabriellauyaa@gmail.com
+// ═══════════════════════════════════════
+async function submitTestimonio() {
+  const name = document.getElementById('test-name').value.trim();
+  const role = document.getElementById('test-role').value.trim();
+  const body = document.getElementById('test-body').value.trim();
+  const msg = document.getElementById('test-msg');
+  const isES = document.documentElement.lang !== 'en';
+  msg.style.display = 'block';
+  if (!name || !body || body.startsWith('Comparte tu experiencia') || body.startsWith('Share your experience')) {
+    msg.style.color = '#e0a030';
+    msg.textContent = isES ? '⚠ Completa tu nombre y tu testimonio antes de enviar.' : '⚠ Please fill in your name and testimonial before submitting.';
+    return;
+  }
+  msg.style.color = 'var(--gray-silver)';
+  msg.textContent = isES ? 'Enviando...' : 'Sending...';
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: `Nuevo testimonio — ${name}`,
+        _template: 'table',
+        Tipo: 'TESTIMONIO WEB',
+        Nombre: name,
+        Cargo_Empresa: role,
+        Testimonio: body
+      })
+    });
+    if (!res.ok) throw new Error('fail');
+    msg.style.color = 'var(--neon-green)';
+    msg.textContent = isES ? '✓ ¡Gracias! Tu testimonio fue enviado y será revisado para su publicación.' : '✓ Thank you! Your testimonial was sent and will be reviewed for publication.';
+    document.getElementById('test-name').value = '';
+    document.getElementById('test-role').value = '';
+    document.getElementById('test-body').value = '';
+  } catch (err) {
+    msg.style.color = '#e05050';
+    msg.textContent = isES ? '✗ No se pudo enviar. Escríbeme directamente a gabriellauyaa@gmail.com' : '✗ Could not send. Please email me directly at gabriellauyaa@gmail.com';
+  }
+}
+
+// ═══════════════════════════════════════
+// CINTA DINÁMICA DE EMPRESAS (duplicar para loop infinito)
+// ═══════════════════════════════════════
+(function(){
+  const track = document.getElementById('marquee-track');
+  if (track) track.innerHTML += track.innerHTML;
+})();
 
 // ═══════════════════════════════════════
 // COPY EMAIL
