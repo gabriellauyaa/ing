@@ -142,10 +142,12 @@ body.light-mode .chat-msg.bot{background:rgba(212,232,218,.5) !important}
 .marquee-wrap{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee-track{display:flex;align-items:center;gap:64px;width:max-content;animation:marqueeScroll 32s linear infinite;will-change:transform}
 .marquee-wrap:hover .marquee-track{animation-play-state:paused}
-.marquee-item{display:flex;align-items:center;gap:14px;white-space:nowrap;opacity:.75;transition:opacity .25s}
+.marquee-item{display:flex;flex-direction:column;align-items:center;gap:12px;white-space:nowrap;opacity:.75;transition:opacity .25s}
 .marquee-item:hover{opacity:1}
-.logo-mono{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 6px;border:1px solid rgba(200,149,42,.45);border-radius:50%;font-family:var(--ff-mono);font-size:12px;letter-spacing:.06em;color:var(--gold);background:rgba(200,149,42,.06)}
-.logo-mono img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.logo-mono{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;flex-shrink:0;border:1px solid rgba(200,149,42,.45);border-radius:50%;overflow:hidden;background:rgba(200,149,42,.06)}
+.marquee-name{order:-1}
+.logo-mono img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:grayscale(35%);transition:filter .25s}
+.marquee-item:hover .logo-mono img{filter:grayscale(0)}
 .marquee-name{font-family:var(--ff-serif);font-size:17px;font-weight:600;letter-spacing:.06em;color:var(--white-mineral)}
 @keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
@@ -1845,6 +1847,54 @@ footer {
 <!-- SECTORES -->
 
 <!-- ORGANIZACIONES -->
+<section id="organizaciones" aria-label="Organizaciones y Membresías">
+  <div class="container">
+    <p class="section-label reveal">— Organizaciones —</p>
+    <h2 class="section-headline reveal">REDES QUE IMPULSAN MI IMPACTO</h2>
+    <p class="org-subheadline reveal">Membresías, comunidades y programas donde aporto y sigo creciendo como profesional.</p>
+    <div class="org-grid">
+      <div class="org-card reveal">
+        <div class="org-img-wrap"><img src="img/org-iimp.jpg" alt="IIMP Perú" loading="lazy"></div>
+        <p class="org-role">Mentor · Programa Mentoring</p>
+        <h3 class="org-name">Instituto de Ingenieros de Minas del Perú (IIMP)</h3>
+        <p class="org-desc">Mentoría a jóvenes profesionales del sector minero, orientando su desarrollo técnico y de carrera.</p>
+      </div>
+      <div class="org-card reveal" style="transition-delay:.1s">
+        <div class="org-img-wrap"><img src="img/hroca.jpg" alt="OMA — Hombre Roca" loading="lazy"></div>
+        <p class="org-role">Hombre Roca</p>
+        <h3 class="org-name">Organización Mundial de Apoyo a la Educación (OMA)</h3>
+        <p class="org-desc">Reconocimiento y participación activa en iniciativas de apoyo a la educación en el Perú.</p>
+      </div>
+      <div class="org-card reveal" style="transition-delay:.2s">
+        <div class="org-img-wrap"><img src="img/british.jpg" alt="UBC BRIMM" loading="lazy"></div>
+        <p class="org-role">BRIMM Fellow</p>
+        <h3 class="org-name">University of British Columbia · BRIMM</h3>
+        <p class="org-desc">Programa internacional de innovación responsable en minería, con enfoque en negociación y sostenibilidad.</p>
+      </div>
+      <div class="org-card reveal" style="transition-delay:.3s">
+        <div class="org-img-wrap"><img src="img/cred-harvard.jpg" alt="Harvard Aspire Leaders" loading="lazy"></div>
+        <p class="org-role">Aspire Leader</p>
+        <h3 class="org-name">Harvard · Aspire Leaders Program</h3>
+        <p class="org-desc">Comunidad global de líderes emergentes impulsada por la Universidad de Harvard.</p>
+      </div>
+      <div class="org-card reveal" style="transition-delay:.4s">
+        <div class="org-img-wrap"><img src="img/mentamautas.jpeg" alt="Amautas Mining" loading="lazy"></div>
+        <p class="org-role">Mentor</p>
+        <h3 class="org-name">Amautas Mining</h3>
+        <p class="org-desc">Comunidad de formación y mentoría para estudiantes y profesionales del sector minero.</p>
+      </div>
+      <div class="org-card reveal" style="transition-delay:.5s">
+        <div class="org-img-wrap"><img src="img/heros.jpg" alt="CIP" loading="lazy"></div>
+        <p class="org-role">Ingeniero Colegiado</p>
+        <h3 class="org-name">Colegio de Ingenieros del Perú (CIP)</h3>
+        <p class="org-desc">Colegiatura profesional habilitada como Ingeniero Ambiental.</p>
+      </div>
+    </div>
+    <div class="org-quote-sep reveal">
+      <p>"Ninguna cima se alcanza solo: las redes profesionales convierten el talento individual en impacto colectivo."</p>
+    </div>
+  </div>
+</section>
 
 <!-- VOLUNTARIADO -->
 <!-- VOLUNTARIADO -->
@@ -2002,14 +2052,15 @@ footer {
   <p class="section-label reveal" style="text-align:center" data-es="— Empresas que confían en mí —" data-en="— Companies that trust me —">— Empresas que confían en mí —</p>
   <div class="marquee-wrap" style="margin-top:36px">
     <div class="marquee-track" id="marquee-track">
-      <div class="marquee-item"><span class="logo-mono">AA</span><span class="marquee-name">Anglo American · Quellaveco</span></div>
-      <div class="marquee-item"><span class="logo-mono">CO</span><span class="marquee-name">COSAPI S.A.</span></div>
-      <div class="marquee-item"><span class="logo-mono">AN</span><span class="marquee-name">Antamina</span></div>
-      <div class="marquee-item"><span class="logo-mono">CH</span><span class="marquee-name">Chinalco · Toromocho</span></div>
-      <div class="marquee-item"><span class="logo-mono">NX</span><span class="marquee-name">Nexa Resources · Cerro Lindo</span></div>
-      <div class="marquee-item"><span class="logo-mono">II</span><span class="marquee-name">IIMP Perú</span></div>
-      <div class="marquee-item"><span class="logo-mono">UBC</span><span class="marquee-name">UBC · BRIMM</span></div>
-      <div class="marquee-item"><span class="logo-mono">HA</span><span class="marquee-name">Harvard · Aspire Leaders</span></div>
+      <!-- Reemplaza cada src="img/..." por el logo real de la empresa (ej. img/logo-angloamerican.png) -->
+      <div class="marquee-item"><span class="logo-mono"><img src="img/RecAAQ.jpg" alt="Anglo American Quellaveco" loading="lazy"></span><span class="marquee-name">Anglo American · Quellaveco</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/heros.jpg" alt="COSAPI S.A." loading="lazy"></span><span class="marquee-name">COSAPI S.A.</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/canchirao.jpg" alt="Antamina" loading="lazy"></span><span class="marquee-name">Antamina</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/mesatec.jpg" alt="Chinalco Toromocho" loading="lazy"></span><span class="marquee-name">Chinalco · Toromocho</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/shallap.jpg" alt="Nexa Resources Cerro Lindo" loading="lazy"></span><span class="marquee-name">Nexa Resources · Cerro Lindo</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/org-iimp.jpg" alt="IIMP Perú" loading="lazy"></span><span class="marquee-name">IIMP Perú</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/cred-ubc.jpg" alt="UBC BRIMM" loading="lazy"></span><span class="marquee-name">UBC · BRIMM</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/cred-harvard.jpg" alt="Harvard Aspire Leaders" loading="lazy"></span><span class="marquee-name">Harvard · Aspire Leaders</span></div>
     </div>
   </div>
 </section>
