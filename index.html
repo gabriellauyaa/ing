@@ -139,18 +139,19 @@ body.light-mode .chat-msg.bot{background:rgba(212,232,218,.5) !important}
 /* TESTIMONIOS (mejora 3) */
 #testimonios{background:var(--bg-primary);padding:100px 0}
 /* EMPRESAS — cinta dinámica */
-.marquee-wrap{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee-track{display:flex;align-items:center;gap:64px;width:max-content;animation:marqueeScroll 32s linear infinite;will-change:transform}
+.marquee-wrap{position:relative;width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);display:flex;flex-direction:column;gap:28px}
+.marquee-track{display:flex;align-items:center;gap:48px;width:max-content;animation:marqueeScroll 36s linear infinite;will-change:transform}
+.marquee-track.reverse{animation:marqueeScrollRev 36s linear infinite}
 .marquee-wrap:hover .marquee-track{animation-play-state:paused}
-.marquee-item{display:flex;flex-direction:column;align-items:center;gap:12px;white-space:nowrap;opacity:.75;transition:opacity .25s}
-.marquee-item:hover{opacity:1}
-.logo-mono{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;flex-shrink:0;border:1px solid rgba(200,149,42,.45);border-radius:50%;overflow:hidden;background:rgba(200,149,42,.06)}
-.marquee-name{order:-1}
-.logo-mono img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:grayscale(35%);transition:filter .25s}
+.marquee-item{display:flex;align-items:center;gap:16px;white-space:nowrap;opacity:.9;transition:opacity .25s,transform .25s}
+.marquee-item:hover{opacity:1;transform:scale(1.04)}
+.logo-mono{display:inline-flex;align-items:center;justify-content:center;width:150px;height:70px;padding:8px 16px;flex-shrink:0;background:#fff;border-radius:10px;border:1px solid rgba(200,149,42,.25);box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.logo-mono img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:grayscale(15%);transition:filter .25s}
 .marquee-item:hover .logo-mono img{filter:grayscale(0)}
-.marquee-name{font-family:var(--ff-serif);font-size:17px;font-weight:600;letter-spacing:.06em;color:var(--white-mineral)}
+.marquee-name{font-family:var(--ff-serif);font-size:14px;font-weight:600;letter-spacing:.05em;color:var(--white-mineral)}
 @keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
+@keyframes marqueeScrollRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){.marquee-track,.marquee-track.reverse{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
 .test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
 .test-card{background:rgba(26,74,46,.07);border:1px solid rgba(200,149,42,.12);border-radius:12px;padding:28px;transition:border-color .3s,transform .3s}
 .test-card:hover{border-color:rgba(200,149,42,.35);transform:translateY(-3px)}
@@ -2051,15 +2052,19 @@ footer {
 <section id="empresas" aria-label="Empresas que confían en mí" style="padding:70px 0;background:var(--bg-primary);border-top:1px solid rgba(200,149,42,.12);border-bottom:1px solid rgba(200,149,42,.12);overflow:hidden">
   <p class="section-label reveal" style="text-align:center" data-es="— Empresas que confían en mí —" data-en="— Companies that trust me —">— Empresas que confían en mí —</p>
   <div class="marquee-wrap" style="margin-top:36px">
-    <div class="marquee-track" id="marquee-track">
-      <!-- Reemplaza cada src="img/..." por el logo real de la empresa (ej. img/logo-angloamerican.png) -->
-      <div class="marquee-item"><span class="logo-mono"><img src="img/cosapilogo.jpg" alt="COSAPI S.A." loading="lazy"></span><span class="marquee-name">COSAPI S.A. </span></div>
-      <div class="marquee-item"><span class="logo-mono"><img src="img/IIMPlogo.jpg" alt="IIMP PERÚ." loading="lazy"></span><span class="marquee-name">INSTITUTO DE INGENIEROS DE MINAS DEL PERÚ </span></div>
-      <div class="marquee-item"><span class="logo-mono"><img src="img/antaminalogo.jpg" alt="ANTAMINA" loading="lazy"></span><span class="marquee-name">ANTAMINA </span></div>
-      <div class="marquee-item"><span class="logo-mono"><img src="img/UBClogo.jpg" alt="UBC" loading="lazy"></span><span class="marquee-name">THE UNIVERSITY OF BRITISH COLUMBIA (UBC) </span></div>
-      <div class="marquee-item"><span class="logo-mono"><img src="img/amautaslogo.jpg" alt="Amautas Mineros" loading="lazy"></span><span class="marquee-name">AMAUTAS MINEROS PERÚ </span></div>
-      <div class="marquee-item"><span class="logo-mono"><img src="img/omalogo.jpg" alt="OMA PERÚ" loading="lazy"></span><span class="marquee-name"> ORGANIZACIÓN MUNDIAL DE APOYO A LA EDUCACIÓN (OMA) </span></div>
-      <div class="marquee-item"><span class="logo-mono"><img src="img/UNASAMlogo.jpg" alt="UNASAM" loading="lazy"></span><span class="marquee-name"> UNIVERSIDAD NACIONAL SANTIAGO ANTUNEZ DE MAYOLO </span></div>
+    <!-- Reemplaza cada src="img/..." por el logo real de la empresa (ej. img/logo-angloamerican.png) -->
+    <!-- FILA 1 (desplaza hacia la izquierda) -->
+    <div class="marquee-track" id="marquee-track-1">
+      <div class="marquee-item"><span class="logo-mono"><img src="img/cosapilogo.jpg" alt="COSAPI S.A." loading="lazy"></span><span class="marquee-name">COSAPI S.A.</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/IIMPlogo.jpg" alt="IIMP PERÚ" loading="lazy"></span><span class="marquee-name">INSTITUTO DE INGENIEROS DE MINAS DEL PERÚ</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/antaminalogo.jpg" alt="ANTAMINA" loading="lazy"></span><span class="marquee-name">ANTAMINA</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/UBClogo.jpg" alt="UBC" loading="lazy"></span><span class="marquee-name">THE UNIVERSITY OF BRITISH COLUMBIA (UBC)</span></div>
+    </div>
+    <!-- FILA 2 (desplaza hacia la derecha) -->
+    <div class="marquee-track reverse" id="marquee-track-2">
+      <div class="marquee-item"><span class="logo-mono"><img src="img/amautaslogo.jpg" alt="Amautas Mineros" loading="lazy"></span><span class="marquee-name">AMAUTAS MINEROS PERÚ</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/omalogo.jpg" alt="OMA PERÚ" loading="lazy"></span><span class="marquee-name">ORGANIZACIÓN MUNDIAL DE APOYO A LA EDUCACIÓN (OMA)</span></div>
+      <div class="marquee-item"><span class="logo-mono"><img src="img/UNASAMlogo.jpg" alt="UNASAM" loading="lazy"></span><span class="marquee-name">UNIVERSIDAD NACIONAL SANTIAGO ANTUNEZ DE MAYOLO</span></div>
       <div class="marquee-item"><span class="logo-mono"><img src="img/aspirelogo.jpg" alt="Harvard Aspire Leaders" loading="lazy"></span><span class="marquee-name">Harvard · Aspire Leaders</span></div>
     </div>
   </div>
@@ -2715,8 +2720,10 @@ async function submitTestimonio() {
 // CINTA DINÁMICA DE EMPRESAS (duplicar para loop infinito)
 // ═══════════════════════════════════════
 (function(){
-  const track = document.getElementById('marquee-track');
-  if (track) track.innerHTML += track.innerHTML;
+  ['marquee-track-1','marquee-track-2'].forEach(function(id){
+    const track = document.getElementById(id);
+    if (track) track.innerHTML += track.innerHTML;
+  });
 })();
 
 // ═══════════════════════════════════════
