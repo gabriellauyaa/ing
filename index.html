@@ -2839,37 +2839,6 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 // ═══════════════════════════════════════
-// ROTACIÓN DE TEMAS DE COLOR (cada 60s)
-// ═══════════════════════════════════════
-(function() {
-  const themes = ['0','1','2','3'];
-  let cur = 0;
-  document.body.setAttribute('data-theme', '0');
-
-  // Indicador visual (4 puntitos esquina inferior izquierda)
-  const ind = document.createElement('div');
-  ind.style.cssText = 'position:fixed;bottom:20px;left:20px;z-index:9998;display:flex;gap:6px;align-items:center;';
-  const colors = ['#C8952A','#B87333','#A8A8A8','#D4AF37'];
-  themes.forEach((t,i) => {
-    const dot = document.createElement('div');
-    dot.style.cssText = `width:7px;height:7px;border-radius:50%;background:${colors[i]};opacity:${i===0?1:0.3};cursor:pointer;transition:opacity .3s,transform .3s;`;
-    dot.title = ['Verde','Azul','Gris','Vino'][i];
-    dot.onclick = () => { cur = i; apply(); };
-    ind.appendChild(dot);
-  });
-  document.body.appendChild(ind);
-
-  function apply() {
-    document.body.setAttribute('data-theme', themes[cur]);
-    ind.querySelectorAll('div').forEach((d,i) => {
-      d.style.opacity = i===cur ? '1':'0.3';
-      d.style.transform = i===cur ? 'scale(1.5)':'scale(1)';
-    });
-  }
-  setInterval(() => { cur=(cur+1)%4; apply(); }, 60000);
-})();
-
-// ═══════════════════════════════════════
 // SLIDESHOW DE FOTOS (cada 30s)
 // ═══════════════════════════════════════
 (function() {
